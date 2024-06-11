@@ -17,7 +17,7 @@
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
+          <a href="" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="{{url('assets/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -33,7 +33,7 @@
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="{{url('assets/dist/img/user8-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -110,7 +110,14 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+              <div class="image">
+                  <img src="{{ url('assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" >
+              </div>
+              <div class="info">
+                  <a  class="d-block">{{Auth::user()->name}}</a>
+              </div>
+          </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
