@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\SubCategoryModel;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class SubcategoryController extends Controller
 {
@@ -66,9 +66,9 @@ class SubcategoryController extends Controller
     
     }
     public function delete($id){
-        $category = CategoryModel::getSingle($id);
-        $category->is_delete=1;
-        $category->save();
+        $subcategory = SubCategoryModel::getSingle($id);
+        $subcategory->is_delete=1;
+        $subcategory->save();
 
         return redirect()->back()->with('success',' Sub Category successfully deleted');
     }

@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-    //
     public function list(){
         $data['getRecord'] = CategoryModel::getRecord();
         $data['header_title'] = 'Category';
@@ -39,6 +38,7 @@ class CategoryController extends Controller
     }
 
     public function edit($id){
+        
         $data['getRecord'] = CategoryModel::getSingle($id);
         $data['header_title'] = 'Edit Category';
         return view('admin.category.edit', $data);
