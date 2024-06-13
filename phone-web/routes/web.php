@@ -58,6 +58,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/brand/edit/{id}', [BrandController::class, 'update']);
     Route::get('admin/brand/delete/{id}', [BrandController::class, 'delete']);
 
+    //them sua xoa color
     Route::get('admin/color/list', [ColorController::class, 'list']);
     Route::get('admin/color/add', [ColorController::class, 'add']);
     Route::post('admin/color/add', [ColorController::class, 'insert']);

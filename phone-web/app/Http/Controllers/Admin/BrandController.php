@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BrandModel;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class BrandController extends Controller
 {
@@ -32,7 +32,7 @@ class BrandController extends Controller
         $brand->meta_title = trim($request->meta_title);
         $brand->meta_description = trim($request->meta_description);
         $brand->meta_keywords = trim($request->meta_keywords);
-        // $brand->created_by = Auth::user()->id;
+        $brand->created_by = Auth::user()->id;
         $brand->save();
 
         return redirect('admin/brand/list')->with('success', "Brand successfully created");
