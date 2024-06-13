@@ -150,10 +150,10 @@
             </li>
 
            <li class="nav-item">
-                <a href="{{url('admin/Sub_category/list')}}" class="nav-link @if(Request::segment(2) == 'Sub_category') active @endif">
+                <a href="{{url('admin/sub_category/list')}}" class="nav-link @if(Request::segment(2) == 'sub_category') active @endif">
                 <i class="nav-icon fas fa-list-alt"></i>
                 <p>
-                    Category
+                   Sub Category
                 </p>
                 </a>
             </li>

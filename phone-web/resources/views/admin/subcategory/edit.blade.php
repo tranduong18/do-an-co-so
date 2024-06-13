@@ -13,7 +13,6 @@
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -25,16 +24,16 @@
                                 <div class="form-group">
                                     <label>Category Name <span style="color: red;">*</span></label>
                                     <select class="form-control" name="category_id">
-                                        <option value>Select</option>
+                                        <option value="">Select</option>
                                         @foreach($getCategory as $value)
-                                            <option value="{{ $value->id }}" {{ $value->id == $getRecord->category_id ? 'selected' : '' }}>{{ $value->name }}</option>
+                                         <option {{($value ->id  == $getRecord -> category_id) ? 'selected' : ''}} value ="{{$value ->id }}">{{$value -> name}} ></option>
                                         @endforeach
                                     </select>
                                 </div>
-
+                                
                                 <div class="form-group">
                                     <label>Sub Category Name <span style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" name="name" required value="{{ old('name', $getRecord->name) }}" placeholder="Category name">
+                                    <input type="text" class="form-control" name="name" required value="{{ old('name', $getRecord->name) }}" placeholder="Sub Category name">
                                 </div>
 
                                 <div class="form-group">
@@ -82,5 +81,5 @@
 @endsection
 
 @section('script')
-    <!-- <script src="{{ url('assets/dist/js/pages/dashboard3.js') }}"></script> -->
+     <script src="{{ url('assets/dist/js/pages/dashboard3.js') }}"></script>
 @endsection

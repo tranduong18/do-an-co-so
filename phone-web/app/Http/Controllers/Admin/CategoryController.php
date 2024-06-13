@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
@@ -33,7 +32,7 @@ class CategoryController extends Controller
         $category->meta_title = trim($request->meta_title);
         $category->meta_description = trim($request->meta_description);
         $category->meta_keywords = trim($request->meta_keywords);
-        // $category->created_by = Auth::user()->id;
+        $category->created_by = Auth::user()->id;
         $category->save();
 
         return redirect('admin/category/list')->with('success', "Category successfully created");
