@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +69,6 @@ Route::group(['middleware' => 'admin'], function(){
 
 });
 
+    Route::get('/', [HomeController::class, 'home']);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
