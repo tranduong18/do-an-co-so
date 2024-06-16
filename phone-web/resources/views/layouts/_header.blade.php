@@ -62,19 +62,22 @@
                                             <div class="col-md-12">
                                                 <div class="menu-col">
                                                     <div class="row">
-                                                    @for($i=1;$i<=8;$i++)
-
-                                                        <div class="col-md-4" style="margin-bottom: 20px;">
-                                                            <a href="" class="menu-title">Shop with sidebar</>
-                                                            <ul>
-                                                                <li><a href="category-list.html">Shop List</a></li>
-                                                                <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
-                                                                <li><a href="category.html">Shop Grid 3 Columns</a></li>
-                                                                <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
-                                                                <li><a href="category-market.html"><span>Shop Market<span class="tip tip-new">New</span></span></a></li>
-                                                            </ul>                                                 
-                                                    </div>
-                                                    @endfor
+                                            @php
+                                                $getCategoryHeader = App\Models\CategoryModel::getRecordMenu();
+                                            @endphp                     
+                                                    @foreach($getCategoryHeader as $value_h_c)
+                                                        @if(!empty($value_h_c->getSubCategory->count()))
+                                                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                                                <a href="{{ url($value_h_c->slug) }}" class="menu-title">{{ $value_h_c->name}}</a>
+                                                                <ul>
+                                                                    @foreach($value_h_c->getSubCategory as $value_h_sub)
+                                                                        <li><a href="{{ url($value_h_c->slug.'/'.$value_h_sub->slug)}}">{{ $value_h_sub->name}}</a></li>
+                                                                    @endforeach
+                                                                    
+                                                                </ul>                                                 
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         
