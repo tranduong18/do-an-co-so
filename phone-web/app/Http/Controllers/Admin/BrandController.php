@@ -1,28 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\BrandModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BrandController extends Controller
 {
-    public function list(){
+    public function list( )
+    {
         $data['getRecord'] = BrandModel::getRecord();
-        $data['header_title'] = 'Brand';
-        return view('admin.Brand.list', $data);
+        $data['header_title'] ='Brand';
+        return view('admin.brand.list',$data);
     }
 
     public function add(){
-        $data['header_title'] = 'Add New Brand';
-        return view('admin.brand.add', $data);
+        $data['header_title'] ='Add New Brand';
+        return view('admin.brand.add',$data);
     }
 
     public function insert(Request $request){
         request()->validate([
-            'slug'=>'required|unique:brand'
+            'slug' => 'required|unique:brand'
         ]);
 
         $brand = new BrandModel();
@@ -31,7 +31,7 @@ class BrandController extends Controller
         $brand->status = trim($request->status);
         $brand->meta_title = trim($request->meta_title);
         $brand->meta_description = trim($request->meta_description);
-        $brand->meta_keywords = trim($request->meta_keywords);
+        $brand->meta_keywords = trim($request->key_words);
         $brand->created_by = Auth::user()->id;
         $brand->save();
 
@@ -40,13 +40,13 @@ class BrandController extends Controller
 
     public function edit($id){
         $data['getRecord'] = BrandModel::getSingle($id);
-        $data['header_title'] = 'Edit Brand';
-        return view('admin.brand.edit', $data);
+        $data['header_title'] ='Edit Brand';
+        return view('admin.brand.edit',$data);
     }
 
-    public function update($id,Request $request){
+    public function update($id, Request $request){
         request()->validate([
-            'slug'=>'required|unique:category,slug,'.$id
+            'slug' => 'required|unique:brand,slug, '. $id
         ]);
 
         $brand = BrandModel::getSingle($id);
@@ -63,9 +63,9 @@ class BrandController extends Controller
 
     public function delete($id){
         $brand = BrandModel::getSingle($id);
-        $brand->is_delete=1;
+        $brand->is_delete = 1;
         $brand->save();
 
-        return redirect()->back()->with('success','Brand successfully deleted');
+        return redirect()->back()->with('success', "Brand Successfully Deleted");
     }
 }

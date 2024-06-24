@@ -8,68 +8,82 @@ use App\Models\CategoryModel;
 use App\Models\SubCategoryModel;
 use Illuminate\Support\Facades\Auth;
 
-class SubcategoryController extends Controller
+class SubCategoryController extends Controller
 {
-    public function list(){
+    public function list( )
+    {
         $data['getRecord'] = SubCategoryModel::getRecord();
-        $data['header_title'] = 'Sub Category';
-        return view('admin.subcategory.list', $data);
+        $data['header_title'] ='Sub Category';
+        return view('admin.sub_category.list',$data);
     }
+
     public function add(){
         $data['getCategory'] = CategoryModel::getRecord();
-        $data['header_title'] = 'Add New Sub Category';
-        return view('admin.subcategory.add', $data);
+        $data['header_title'] ='Add New Sub Category';
+        return view('admin.sub_category.add',$data);
     }
+
     public function insert(Request $request){
         request()->validate([
-            'slug'=>'required|unique:sub_category'
+            'slug' => 'required|unique:sub_category'
         ]);
 
-        $subcategory = new SubCategoryModel();
-        $subcategory->category_id = trim($request->category_id);
-        $subcategory->name = trim($request->name);
-        $subcategory->slug = trim($request->slug);
-        $subcategory->status = trim($request->status);
-        $subcategory->meta_title = trim($request->meta_title);
-        $subcategory->meta_description = trim($request->meta_description);
-        $subcategory->meta_keywords = trim($request->meta_keywords);
-        $subcategory->created_by = Auth::user()->id;
-        $subcategory->save();
+        $sub_category = new SubCategoryModel();
+        $sub_category->category_id = trim($request->category_id);
+        $sub_category->name = trim($request->name);
+        $sub_category->slug = trim($request->slug);
+        $sub_category->status = trim($request->status);
+        $sub_category->meta_title = trim($request->meta_title);
+        $sub_category->meta_description = trim($request->meta_description);
+        $sub_category->meta_keywords = trim($request->key_words);
+        $sub_category->created_by = Auth::user()->id;
+        $sub_category->save();
 
         return redirect('admin/sub_category/list')->with('success', "Sub Category successfully created");
-    
     }
+
     public function edit($id){
-        $data['getCategory'] = SubCategoryModel::getRecord();
+        $data['getCategory'] = CategoryModel::getRecord();
         $data['getRecord'] = SubCategoryModel::getSingle($id);
-        $data['header_title'] = 'Edit Sub Category';
-        return view('admin.subcategory.edit', $data);
+        $data['header_title'] ='Edit Sub Category';
+        return view('admin.sub_category.edit',$data);
     }
+
     public function update($id, Request $request){
-       
         request()->validate([
-            'slug'=>'required|unique:sub_category,slug,'.$id
+            'slug' => 'required|unique:sub_category,slug,' . $id
         ]);
 
-        $subcategory = SubCategoryModel::getSingle($id);
-        $subcategory->category_id = trim($request->category_id);
-        $subcategory->name = trim($request->name);
-        $subcategory->slug = trim($request->slug);
-        $subcategory->status = trim($request->status);
-        $subcategory->meta_title = trim($request->meta_title);
-        $subcategory->meta_description = trim($request->meta_description);
-        $subcategory->meta_keywords = trim($request->meta_keywords);
+        $sub_category = SubCategoryModel::getSingle($id);
+        $sub_category->category_id = trim($request->category_id);
+        $sub_category->name = trim($request->name);
+        $sub_category->slug = trim($request->slug);
+        $sub_category->status = trim($request->status);
+        $sub_category->meta_title = trim($request->meta_title);
+        $sub_category->meta_description = trim($request->meta_description);
+        $sub_category->meta_keywords = trim($request->meta_keywords);
+        $sub_category->save();
 
-        $subcategory->save();
-
-        return redirect('admin/sub_category/list')->with('success', "Sub Category successfully Updated");
-    
+        return redirect('admin/sub_category/list')->with('success', "Sub Category successfully updated");
     }
-    public function delete($id){
-        $subcategory = SubCategoryModel::getSingle($id);
-        $subcategory->is_delete=1;
-        $subcategory->save();
 
-        return redirect()->back()->with('success',' Sub Category successfully deleted');
+    public function delete($id){
+        $sub_category = SubCategoryModel::getSingle($id);
+        $sub_category->is_delete = 1;
+        $sub_category->save();
+
+        return redirect()->back()->with('success', "Sub Category Successfully Deleted");
+    }
+
+    public function get_sub_category(Request $request){
+        $category_id = $request->id;
+        $get_sub_category = SubCategoryModel::getRecordSubCategory($category_id);
+        $html = '';
+        $html .= '<option value="">Select</option>';
+        foreach ($get_sub_category as $value) {
+            $html .= '<option value="' .$value->id. '">'.$value->name. '</option>';
+        }
+        $json['html'] = $html;
+        echo json_encode($json);
     }
 }

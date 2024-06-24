@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
 
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
@@ -31,12 +31,14 @@
                                         <input type="text" class="form-control" name="name" required value="{{old('name', $getRecord->name)}}" placeholder="Category Name">
                                     </div>
 
+
+
                                     <div class="form-group">
                                         <label>Slug <span style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="slug" required value="{{old('slug', $getRecord->slug)}}" placeholder="Slug">
                                         <div style="color:red">{{$errors->first('slug')}}</div>
                                     </div>
-                                    
+
 
                                     <div class="form-group">
                                         <label >Status <span style="color: red;">*</span></label>
@@ -46,6 +48,23 @@
                                         </select>
                                     </div>
 
+                                    <hr>
+                                    <div class="form-group">
+                                        <label>Image <span style="color: red;">*</span></label>
+                                        <input type="file" class="form-control" name="image_name" >
+                                        @if(!empty($getRecord->getImage()))
+                                            <img src="{{$getRecord->getImage()}} " style="height: 100px;">
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Button Name <span style="color: red;">*</span></label>
+                                        <input type="text" class="form-control" name="button_name" required value="{{old('button_name', $getRecord->button_name)}}" placeholder="Button Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="display: block;">Home Screen <span style="color: red;">*</span></label>
+                                        <input type="checkbox"  name="is_home" {{!empty($getRecord->is_home) ? 'checked' : ''}}>
+                                    </div>
                                     <hr>
 
                                     <div class="form-group">
@@ -64,7 +83,7 @@
                                     </div>
 
                                 </div>
-                        
+
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Update</button>

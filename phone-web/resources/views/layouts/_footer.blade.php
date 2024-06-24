@@ -27,7 +27,9 @@
 	            					<li><a href="#">How to shop on Molla</a></li>
 	            					<li><a href="#">FAQ</a></li>
 	            					<li><a href="{{url('contact')}}">Contact us</a></li>
+									@if(empty(Auth::check()))
 	            					<li><a href="#signin-modal" data-toggle="modal">Log in</a></li>
+									@endif
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
@@ -46,20 +48,21 @@
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
-
+						
+						@if(!empty(Auth::check()))
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget">
 	            				<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="#">Sign In</a></li>
-	            					<li><a href="#">View Cart</a></li>
-	            					<li><a href="#">My Wishlist</a></li>
+	            					<li><a href="{{url('cart')}}">View Cart</a></li>
+	            					<li><a href="{{url('my-wishlist')}}">My Wishlist</a></li>
 	            					<li><a href="#">Track My Order</a></li>
 	            					<li><a href="#">Help</a></li>
 	            				</ul><!-- End .widget-list -->
 	            			</div><!-- End .widget -->
 	            		</div><!-- End .col-sm-6 col-lg-3 -->
+						@endif
 	            	</div><!-- End .row -->
 	            </div><!-- End .container -->
 	        </div><!-- End .footer-middle -->

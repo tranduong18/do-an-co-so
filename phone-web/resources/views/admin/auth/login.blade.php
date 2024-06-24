@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Admin</b></a>
+    <a href=""><b style="color: red; font-weight:500px;">Admin</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
