@@ -130,10 +130,7 @@
                                                     <img style="height: 280px;width: 100%;object-fit: cover;" src="{{$getProductImage->getLogo()}}" alt="{{$value->title}}" class="product-image">
                                                 @endif
                                             </a>
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
-                                to wishlist</span></a>
-                                            </div>
+                                            <!--                    -->
                                         </figure>
                                         <div class="product-body">
                                             <div class="product-cat">

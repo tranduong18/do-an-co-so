@@ -41,51 +41,51 @@ class AuthController extends Controller
         return redirect(url('/'));
     }
 
-    // public function auth_login(Request $request){
-    //     $remember = !empty($request->is_remember) ? true : false;
-    //     if(Auth::attempt(['email' => $request->email, 'password' => $request->password,'status' => 0,'is_deleted' => 0], $remember)){
-    //         if(!empty(Auth::user()->email_verified_at)){
-    //             $json['status'] = true;
-    //             $json['message'] = "Success";
-    //         }
-    //         else{
-    //             $user = User::getSingle(Auth::user()->id);
-    //             Mail::to($user->email)->send(new RegisterMail($user));
-    //             Auth::logout();
+    public function auth_login(Request $request){
+        $remember = !empty($request->is_remember) ? true : false;
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password,'status' => 0,'is_delete' => 0], $remember)){
+            if(!empty(Auth::user()->email_verified_at)){
+                $json['status'] = true;
+                $json['message'] = "Success";
+            }
+            else{
+                $user = User::getSingle(Auth::user()->id);
+                Mail::to($user->email)->send(new RegisterMail($user));
+                Auth::logout();
 
-    //             $json['status'] = false;
-    //             $json['message'] = "Your account email not verified. Please check your inbox and verified";
-    //         }
-    //     }
-    //     else{
-    //         $json['status'] = false;
-    //         $json['message'] = "Please enter correct email and password";
-    //     }
-    //     echo json_encode($json);
-    // }
+                $json['status'] = false;
+                $json['message'] = "Your account email not verified. Please check your inbox and verified";                                   
+            }
+        }
+        else{
+            $json['status'] = false;
+            $json['message'] = "Please enter correct email and password";
+        }
+        echo json_encode($json);
+    }
 
 
-    // public function auth_register(Request $request){
-    //     $checkEmail = User::checkEmail($request->email);
-    //     if(empty($checkEmail)){
-    //         $user = new User();
-    //         $user->name = trim($request->name);
-    //         $user->email = trim($request->email);
-    //         $user->password = Hash::make($request->password);
-    //         $user->save();
+    public function auth_register(Request $request){
+        $checkEmail = User::checkEmail($request->email);
+        if(empty($checkEmail)){
+            $user = new User();
+            $user->name = trim($request->name);
+            $user->email = trim($request->email);
+            $user->password = Hash::make($request->password);
+            $user->save();
 
-    //         Mail::to($user->email)->send(new RegisterMail($user));
+            Mail::to($user->email)->send(new RegisterMail($user));
             
-    //         $json['status'] = true;
-    //         $json['message'] = "Your account successfully created. Please verify your email";
-    //     }
-    //     else{
-    //         $json['status'] = false;
-    //         $json['message'] = "This email already register please choose another";
-    //     }
+            $json['status'] = true;
+            $json['message'] = "Your account successfully created. Please verify your email";
+        }
+        else{
+            $json['status'] = false;
+            $json['message'] = "This email already register please choose another";
+        }
 
-    //     echo json_encode($json);
-    // }
+        echo json_encode($json);
+    }
 
     public function activate_email($id){
         $id = base64_decode($id);
@@ -101,20 +101,20 @@ class AuthController extends Controller
         return view('auth.forgot', $data);
     }
 
-    // public function auth_forgot_password(Request $request){
-    //     $user = User::where('email', '=', $request->email)->first();
-    //     if(!empty($user)){
-    //         $user->remember_token = Str::random(30);
-    //         $user->save();
+    public function auth_forgot_password(Request $request){
+        $user = User::where('email', '=', $request->email)->first();
+        if(!empty($user)){
+            $user->remember_token = Str::random(30);
+            $user->save();
 
-    //         Mail::to($user->email)->send(new ForgotPasswordMail($user));
+            Mail::to($user->email)->send(new ForgotPasswordMail($user));
 
-    //         return redirect()->back()->with('success', "Please check your email and reset your password");
-    //     }
-    //     else{
-    //         return redirect()->back()->with('error', "Email not found in the system");
-    //     }
-    // }
+            return redirect()->back()->with('success', "Please check your email and reset your password");
+        }
+        else{
+            return redirect()->back()->with('error', "Email not found in the system");
+        }
+    }
 
     public function reset($token){
         $user = User::where('remember_token', '=', $token)->first();

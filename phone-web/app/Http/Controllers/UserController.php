@@ -20,7 +20,8 @@ class UserController extends Controller
         $data['meta_keywords'] = '';
 
         $data['TotalOrder'] = OrderModel::getTotalOrderUser(Auth::user()->id);
-        $data['TotalTodayOrder'] = OrderModel::getTotalTodayOrderUser(Auth::user()->id);
+        
+        $data['TotalTodayOrder'] = OrderModel::getTotalTodayOrderUser(Auth::user()->id);  
         $data['TotalAmount'] = OrderModel::getTotalAmountUser(Auth::user()->id);
         $data['TotalTodayAmount'] = OrderModel::getTotalTodayAmountUser(Auth::user()->id);
 

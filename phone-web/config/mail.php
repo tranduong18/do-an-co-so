@@ -41,8 +41,14 @@ return [
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            // 'host' => 'smtp.gmail.com',
+            // 'port' => 587,
+            // 'encryption' => 'tls',
+            // 'username' => 'duongthichvo@gmail.com',
+            // 'password' => 'glfn buaz pano ybrk',
+            // 'timeout' => null,
+            // 'auth_mode'=> null,
+            // 'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
 
         'ses' => [
@@ -100,6 +106,8 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
+        // 'address' => 'duongthichvo@gmail.com',
+        // 'name' => 'E-Commerce',
     ],
 
     /*
