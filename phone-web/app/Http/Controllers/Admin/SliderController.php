@@ -56,7 +56,7 @@ class SliderController extends Controller
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);
             $filename = strtolower($randomStr).'.'.$ext;
-            $file->move('upload/slider/', $filename);
+            $file->move('upload/page/', $filename);
             $slider->image_name = trim($filename);
         }
 
