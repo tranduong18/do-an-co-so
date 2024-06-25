@@ -137,6 +137,8 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::post('admin/partner/edit/{id}', [PartnerController::class, 'update']);
     Route::get('admin/partner/delete/{id}', [PartnerController::class, 'delete']);
     
+    Route::get('admin/page/add', [PageController::class, 'add']);
+    Route::post('admin/page/add', [PageController::class, 'insert']);
     Route::get('admin/page/list', [PageController::class, 'list']);
     Route::get('admin/page/edit/{id}', [PageController::class, 'edit']);
     Route::post('admin/page/edit/{id}', [PageController::class, 'update']);

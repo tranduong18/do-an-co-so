@@ -49,11 +49,7 @@
                                         <textarea class="form-control editor" name="description">{{$getRecord->description}}</textarea>
                                     </div>
                                     <hr>
-                                   
-
-                                 
-                                 
-
+                                                                                          
                                     <div class="form-group">
                                         <label>Meta title <span style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="meta_title" required value="{{old('meta_title', $getRecord->meta_title)}}" placeholder="Meta title">
@@ -64,11 +60,7 @@
                                         <textarea name="meta_description" class="form-control" placeholder="Meta Description">{{old('meta_description', $getRecord->meta_description)}}</textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Meta Keywords</label>
-                                        <input type="text" class="form-control" name="meta_keywords" value="{{old('meta_keywords', $getRecord->meta_keywords)}}" placeholder="Meta Keywords">
-                                    </div>
-
+    
                                 </div>
 
 
@@ -87,17 +79,5 @@
 @endsection
 
 @section('script')
-    <script src="{{url('tinymce/tinymce-jquery.min.js')}}"></script>
-    <script type="text/javascript">
-   $('.editor').tinymce({
-        height: 200,
-        menubar: false,
-        plugins: [
-            'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'markdown',
-            'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-            'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
-        ],
-        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist checklist outdent indent | removeformat | code table help'
-    });
-    </script>
+  
 @endsection

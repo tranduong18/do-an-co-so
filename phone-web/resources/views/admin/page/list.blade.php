@@ -11,9 +11,7 @@
                 <div class="col-sm-6">
                     <h1>Page List</h1>
                 </div>
-                <div class="col-sm-6" style="text-align: right;">
-                    <a href="{{url('admin/page/add')}}" class="btn btn-primary">Add New Page</a>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -34,18 +32,15 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                        
+                                        <th>Name</th>                      
                                         <th>Action</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($getRecord as $value)
                                     <tr>
                                         <td>{{$value->id}}</td>
-                                        <td>{{$value->name}}</td>
-                                       
+                                        <td>{{$value->name}}</td>                     
                                         <td>
                                             <a href="{{url('admin/page/edit/'.$value->id)}}" class="btn btn-primary">Edit </a>
                                         

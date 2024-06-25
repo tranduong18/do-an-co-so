@@ -8,6 +8,12 @@ use Auth;
 use Str;
 class PageController extends Controller
 {
+    public function add()
+    {
+        $data['getRecord'] = PageModel::getRecord();
+        $data['header_title'] = 'Page';
+        return view('admin.page.add', $data);
+    }
     public function list()
     {
         $data['getRecord'] = PageModel::getRecord();
