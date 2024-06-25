@@ -110,7 +110,7 @@
                                         @endphp
                                         <tr>
                                             <td><a href="{{url($getCartProduct->slug)}}">{{$getCartProduct->title}}</a></td>
-                                            <td>{{number_format($cart->price * $cart->quantity), 2}}</td>
+                                            <td>{{number_format($cart->price * $cart->quantity, 2)}}</td>
                                         </tr>
                                         @endforeach
                                         <tr class="summary-subtotal">
