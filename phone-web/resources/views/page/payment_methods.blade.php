@@ -7,8 +7,8 @@
                         <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $getPage ->title }}</li>
                     </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
+                </div>
+            </nav>
             <div class="container">
 	        	<div class="page-header page-header-big text-center" style="background-image: 
                 url('{{$getPage->getImage()}}')">
@@ -23,10 +23,10 @@
                           {!!$getPage -> description !!}
                         </div>
                    
-                    <div class="mb-5"></div><!-- End .mb-4 -->
-                </div><!-- End .container -->
+                    <div class="mb-5"></div>
+                </div>
 
-            </div><!-- End .page-content -->
-        </main><!-- End .main -->
+            </div>
+        </main>
 
 @endsection
