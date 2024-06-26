@@ -150,7 +150,7 @@
                                             </td>
                                             <td>
                                                 @if(!empty($shipping->name))
-                                                ${{number_format($shipping->price), 2}}
+                                                ${{number_format($shipping->price, 2)}}
                                                 @endif
                                             </td>
                                         </tr>

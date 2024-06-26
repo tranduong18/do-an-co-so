@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\OrderModel;
 use App\Models\User;
 use App\Models\Product_WishlistModel;
+use App\Models\ProductReviewModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -114,6 +115,19 @@ class UserController extends Controller
         }else{
             return redirect()->back()->with('error', 'Old password is incorrect');
         }
+    }
+
+    public function submit_review(Request $request)
+    {
+        $save = new ProductReviewModel;
+        $save->product_id = trim($request->product_id);
+        $save->order_id = trim($request->order_id);
+        $save->user_id = Auth::user()->id;
+        $save->rating = trim($request->rating);
+        $save->review = trim($request->review);
+        $save->save();
+        
+        return redirect()->back()->with('success','Thank you for your review');
     }
 
 }
