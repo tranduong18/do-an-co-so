@@ -32,7 +32,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>                      
+                                        <th>Name</th> 
+                                        <th>Image</th>                     
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -40,7 +41,12 @@
                                     @foreach($getRecord as $value)
                                     <tr>
                                         <td>{{$value->id}}</td>
-                                        <td>{{$value->name}}</td>                     
+                                        <td>{{$value->name}}</td> 
+                                        <td>
+                                                @if(!empty($value->getImage()))
+                                                    <img src="{{$value->getImage()}}" style="height: 100px;">
+                                                @endif
+                                            </td>                    
                                         <td>
                                             <a href="{{url('admin/page/edit/'.$value->id)}}" class="btn btn-primary">Edit </a>
                                         

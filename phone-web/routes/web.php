@@ -138,8 +138,8 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::post('admin/partner/edit/{id}', [PartnerController::class, 'update']);
     Route::get('admin/partner/delete/{id}', [PartnerController::class, 'delete']);
     
-    Route::get('admin/page/add', [PageController::class, 'add']);
-    Route::post('admin/page/add', [PageController::class, 'insert']);
+    
+    Route::post('admin/page/upload', [PageController::class, 'insert']);
     Route::get('admin/page/list', [PageController::class, 'list']);
     Route::get('admin/page/edit/{id}', [PageController::class, 'edit']);
     Route::post('admin/page/edit/{id}', [PageController::class, 'update']);
@@ -151,9 +151,9 @@ Route::get('/', [HomeController::class, 'home']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::get('about', [HomeController::class, 'about']);
 Route::get('faq', [HomeController::class, 'faq']);
-Route::get('payment-methods', [HomeController::class, 'payment_methods']);
+Route::get('payment-method', [HomeController::class, 'payment_method']);
 Route::get('money-back-guarantee', [HomeController::class, 'money_back_guarantee']);
-Route::get('return', [HomeController::class, 'return']);
+Route::get('returns', [HomeController::class, 'return']);
 Route::get('shipping', [HomeController::class, 'shipping']);  
 Route::get('terms-condition', [HomeController::class, 'terms_condition']); 
 Route::get('privacy-policy', [HomeController::class, 'privacy_policy']); 

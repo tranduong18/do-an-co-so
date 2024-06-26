@@ -38,20 +38,17 @@ class PageController extends Controller
         $page->meta_title = trim($request->meta_title);
         $page->meta_description = trim($request->meta_description);
         $page->meta_keywords = trim($request->meta_keywords);
-
-                if(!empty($request->file('image')))
+                if(!empty($request->file('image_name')))
                 {
-                    $file = $request->file('image');
+                    $file = $request->file('image_name');
                     $ext = $file->getClientOriginalExtension();
                     $randomStr = $page->id.Str::random(20);
                     $filename = strtolower($randomStr).'.'.$ext;
                     $file->move('upload/page/', $filename);
-
                     $page->image_name = trim($filename);
                  
         }   
         $page -> save();
-
         return redirect('admin/page/list')->with('success', "Page Charge successfully updated");
     }
 

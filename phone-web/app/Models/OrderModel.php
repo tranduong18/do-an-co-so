@@ -16,7 +16,7 @@ class OrderModel extends Model
     }
 
     //user part
-    static public function                      getTotalOrderUser($user_id){
+    static public function getTotalOrderUser($user_id){
         return self::select('id')
             ->where('user_id', '=', $user_id)
             ->where('is_payment', '=', 1)

@@ -39,9 +39,9 @@
 	            				<h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
 
 	            				<ul class="widget-list">
-	            					<li><a href="{{url('payment-methods')}}">Payment Methods</a></li>
+	            					<li><a href="{{url('payment-method')}}">Payment Methods</a></li>
 	            					<li><a href="{{url('money-back-guarantee')}}">Money-back guarantee!</a></li>
-	            					<li><a href="{{url('return')}}">Return</a></li>
+	            					<li><a href="{{url('returns')}}">Return</a></li>
 	            					<li><a href="{{url('shipping')}}">Shipping</a></li>
 	            					<li><a href="{{url('terms-condition')}}">Terms and conditions</a></li>
 	            					<li><a href="{{url('privacy-policy')}}">Privacy Policy</a></li>
