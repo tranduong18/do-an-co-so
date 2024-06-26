@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,5 +12,9 @@ class OrderItemModel extends Model
 
     public function getProduct(){
         return $this->belongsTo(ProductModel::class, 'product_id');
+    }
+
+    static public function getReview($product_id, $order_id){
+        return ProductReviewModel::getReview($product_id, $order_id, Auth::user()->id);
     }
 }

@@ -80,7 +80,7 @@
                                                             <a href="{{$value_category_header->slug}}" class="menu-title">{{$value_category_header->name}}</a>
                                                             <ul>
                                                                 @foreach($value_category_header->getSubCategory as $value_h_sub)
-                                                                <li><a href="{{url($value_category_header->slug.'/'. $value_h_sub->name)}}">{{$value_h_sub->name}}</a></li>
+                                                                <li><a href="{{url($value_category_header->slug.'/'. $value_h_sub->slug)}}">{{$value_h_sub->name}}</a></li>
                                                                 @endforeach
 
                                                             </ul>

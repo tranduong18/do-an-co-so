@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     public function auth_login(Request $request){
         $remember = !empty($request->is_remember) ? true : false;
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password,'status' => 0,'is_delete' => 0], $remember)){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password,'is_admin' => 0, 'status' => 0,'is_delete' => 0], $remember)){
             if(!empty(Auth::user()->email_verified_at)){
                 $json['status'] = true;
                 $json['message'] = "Success";

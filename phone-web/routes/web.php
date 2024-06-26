@@ -50,6 +50,7 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
     Route::get('my-wishlist', [ProductFront::class, 'my_wishlist']);
     Route::post('add_to_wishlist', [UserController::class, 'add_to_wishlist']);
+    Route::post('user/make-review', [UserController::class, 'submit_review']);
 });
 
     Route::group(['middleware' => 'admin'], function(){
