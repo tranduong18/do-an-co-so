@@ -21,7 +21,7 @@
                         @include('user._sidebar')
                         <div class="col-md-8 col-lg-9">
                             <div class="tab-content">
-                                @include('layout._message')
+                                @include('layouts._message')
                                 <div class="">
 
                                     <div class="form-group">
@@ -189,8 +189,8 @@
             var product_id = $(this).attr('id');
             var order_id = $(this).attr('data-order');
 
-            $('getProductId').val(product_id);
-            $('getOrderId').val(order_id);
+            $('#getProductId').val(product_id);
+            $('#getOrderId').val(order_id);
             $('#MakeReviewModal').modal('show');
         });
     </script>

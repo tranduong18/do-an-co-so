@@ -11,7 +11,7 @@ use App\Models\OrderItemModel;
 use App\Models\ColorModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Cart;
+use Darryldecode\Cart\Facades\CartFacade as Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
