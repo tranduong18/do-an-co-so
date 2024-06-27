@@ -117,8 +117,9 @@
                                                     @if (!empty($getReview))
                                                         <b>Rating:</b> {{$getReview->rating}} <br>
                                                         <b>Review:</b> {{$getReview->review}} <br>
-                                                    @endif
+                                                    @else
                                                     <button class="btn btn-primary MakeReview" id="{{ $item->getProduct->id }}" data-order="{{ $getRecord->id }}">Make Review</button>
+                                                    @endif
                                                 @endif
                                                 </td>
                                                 <td>{{$item->quantity}}</td>
@@ -153,8 +154,8 @@
       </div>
       <form action="{{ url('user/make-review') }}" method="post">
         {{csrf_field()}}
-        <input type="hidden" name="product_id" required id="getProductId">
-        <input type="hidden" name="order_id" required id="getOrderId">
+        <input type="text" name="product_id" required id="getProductId">
+        <input type="text" name="order_id" required id="getOrderId">
       <div class="modal-body" style="padding: 20px;">
         <div class="form-group" style="margin-bottom: 15px;">
             <label>How many rating? *</label>
@@ -188,7 +189,6 @@
         $('body').delegate('.MakeReview', 'click', function(){
             var product_id = $(this).attr('id');
             var order_id = $(this).attr('data-order');
-
             $('#getProductId').val(product_id);
             $('#getOrderId').val(order_id);
             $('#MakeReviewModal').modal('show');

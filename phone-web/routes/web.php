@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ShippingChargeController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PageController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController as ProductFront;
@@ -37,7 +38,7 @@ Route::get('admin', [AuthController::class, 'login_admin']);
 Route::post('admin', [AuthController::class, 'auth_login_admin']);
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
-Route::group(['middleware' => 'user'], function(){
+    Route::group(['middleware' => 'user'], function(){
     Route::get('user/dashboard', [UserController::class, 'dashboard']);
     Route::get('user/orders', [UserController::class, 'orders']);
     Route::get('user/orders/detail/{id}', [UserController::class, 'orders_detail']);
@@ -52,7 +53,7 @@ Route::group(['middleware' => 'user'], function(){
     Route::post('user/make-review', [UserController::class, 'submit_review']);
 });
 
-Route::group(['middleware' => 'admin'], function(){
+    Route::group(['middleware' => 'admin'], function(){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
     //admin
@@ -136,10 +137,26 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/partner/edit/{id}', [PartnerController::class, 'edit']);
     Route::post('admin/partner/edit/{id}', [PartnerController::class, 'update']);
     Route::get('admin/partner/delete/{id}', [PartnerController::class, 'delete']);
+    
+    
+    Route::post('admin/page/upload', [PageController::class, 'insert']);
+    Route::get('admin/page/list', [PageController::class, 'list']);
+    Route::get('admin/page/edit/{id}', [PageController::class, 'edit']);
+    Route::post('admin/page/edit/{id}', [PageController::class, 'update']);
+    
 });
 
 
 Route::get('/', [HomeController::class, 'home']);
+Route::get('contact', [HomeController::class, 'contact']);
+Route::get('about', [HomeController::class, 'about']);
+Route::get('faq', [HomeController::class, 'faq']);
+Route::get('payment-method', [HomeController::class, 'payment_method']);
+Route::get('money-back-guarantee', [HomeController::class, 'money_back_guarantee']);
+Route::get('returns', [HomeController::class, 'return']);
+Route::get('shipping', [HomeController::class, 'shipping']);  
+Route::get('terms-condition', [HomeController::class, 'terms_condition']); 
+Route::get('privacy-policy', [HomeController::class, 'privacy_policy']); 
 //Cart
 Route::post('product/add-to-cart', [PaymentController::class, 'add_to_cart']);
 Route::get('cart', [PaymentController::class, 'cart']);

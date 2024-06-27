@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="{{url('assets/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- IonIcons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
+  <link rel="stylesheet" href="{{url('assets/plugins/summernote/summernote-bs4.min.css')}}">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('assets/dist/css/adminlte.min.css')}}">
   @yield('style')
@@ -30,13 +33,22 @@
 <script src="{{url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
 <script src="{{url('assets/dist/js/adminlte.js')}}"></script>
-
+<script src="{{url('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{url('assets/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="{{url('assets/dist/js/demo.js')}}"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script>
+  $(function () {
+    // Summernote
+    $('.editor').summernote({
+      height:300
+    })
 
+  
+  })
+</script>
 
 @yield('script')
 </body>
