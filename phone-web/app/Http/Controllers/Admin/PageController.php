@@ -4,11 +4,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PageModel;
+use App\Models\ContactUsModel;
+
 use Auth;
 use Str;
 class PageController extends Controller
 {
- 
+    public function contactus()
+    {
+        $data['getRecord'] = ContactUsModel::getRecord();
+        $data['header_title'] = 'Contact us';
+        return view('admin.contactus.list', $data);
+    }
+    public function contactus_delete($id)
+    {
+        ContactUsModel::where('id', '=', $id)->delete();
+
+        return redirect()->back()->with('success', "Record Successfully Deleted");
+    }
     public function list()
     {
         $data['getRecord'] = PageModel::getRecord();

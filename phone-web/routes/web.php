@@ -143,12 +143,16 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::get('admin/page/list', [PageController::class, 'list']);
     Route::get('admin/page/edit/{id}', [PageController::class, 'edit']);
     Route::post('admin/page/edit/{id}', [PageController::class, 'update']);
-    
+
+    Route::get('admin/contactus', [PageController::class, 'contactus']);
+    Route::get('admin/contactus/delete/{id}', [PageController::class, 'contactus_delete']);
+
 });
 
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('contact', [HomeController::class, 'contact']);
+Route::post('contact', [HomeController::class, 'submit_contact']);
 Route::get('about', [HomeController::class, 'about']);
 Route::get('faq', [HomeController::class, 'faq']);
 Route::get('payment-method', [HomeController::class, 'payment_method']);
