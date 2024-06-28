@@ -13,8 +13,13 @@
     @if(!empty($meta_description))
     <meta name="description" content="{{$meta_description}}">
     @endif
+
+    @php
+    $getSystemSettingApp = App\Models\SystemSettingModel::getSingle();
+    @endphp
+
     <meta name="author" content="p-themes">
-    <link rel="shortcut icon" href="{{url('assets/images/icons/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{ $getSystemSettingApp->getFevicon() }}">
 
     <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/plugins/owl-carousel/owl.carousel.css')}}">

@@ -14,6 +14,8 @@ use App\Mail\ContactUsMail;
 use Session;
 use Auth;
 use Mail;
+use App\Models\SystemSettingModel;
+
 class HomeController extends Controller
 {
     public function home(){
@@ -49,7 +51,7 @@ class HomeController extends Controller
 
         $getPage = PageModel::getSlug('contact');
         $data['getPage'] = $getPage;
-
+        $data['getSystemSetting'] = SystemSettingModel::getSingle();
         $data['meta_title']=$getPage->meta_title;
         $data['meta_keyword']=$getPage->meta_description;
         $data['meta_description']=$getPage->meta_keywords;
