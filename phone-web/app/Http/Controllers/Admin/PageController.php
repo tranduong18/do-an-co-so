@@ -4,11 +4,25 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PageModel;
+use App\Models\ContactUsModel;
+
+use App\Models\SystemSettingModel;
 use Auth;
 use Str;
 class PageController extends Controller
 {
- 
+    public function contactus()
+    {
+        $data['getRecord'] = ContactUsModel::getRecord();
+        $data['header_title'] = 'Contact us';
+        return view('admin.contactus.list', $data);
+    }
+    public function contactus_delete($id)
+    {
+        ContactUsModel::where('id', '=', $id)->delete();
+
+        return redirect()->back()->with('success', "Record Successfully Deleted");
+    }
     public function list()
     {
         $data['getRecord'] = PageModel::getRecord();
@@ -42,9 +56,68 @@ class PageController extends Controller
                     $file->move('upload/page/', $filename);
                     $page->image_name = trim($filename);
                  
-        }   
+                }   
         $page -> save();
         return redirect('admin/page/list')->with('success', "Page Charge successfully updated");
+    }
+    public function system_setting()
+    {
+        $data['getRecord'] = SystemSettingModel::getSingle();
+        $data['header_title'] ='System Setting';
+        return view('admin.setting.system_setting',$data);
+    }
+
+    public function update_system_setting(Request $request)
+    {
+        $save = SystemSettingModel::getSingle();
+        $save->website_name = trim($request->website_name);
+        $save->footer_description = trim($request->footer_description);
+        $save->address = trim($request->address);
+        $save->phone = trim($request->rating);
+        $save->phone_two = trim($request->phone_two);
+        $save->submit_email = trim($request->submit_email);
+        $save->email = trim($request->email);
+        $save->email_two = trim($request->email_two);
+        $save->working_hour = trim($request->working_hour);
+        $save->facebook_link = trim($request->facebook_link);
+        $save->twitter_link = trim($request->twitter_link);
+        $save->instagram_link = trim($request->instagram_link);
+        $save->youtube_link = trim($request->youtube_link);
+        $save->pinterest_link = trim($request->pinterest_link);
+
+        if(!empty($request->file('logo')))
+        {
+            $file = $request->file('logo');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/setting/', $filename);
+            $save->logo = trim($filename);                
+        }
+
+        if(!empty($request->file('fevicon')))
+        {
+            $file = $request->file('fevicon');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/setting/', $filename);
+            $save->fevicon = trim($filename);                
+        }
+
+        if(!empty($request->file('footer_payment_icon')))
+        {
+            $file = $request->file('footer_payment_icon');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr).'.'.$ext;
+            $file->move('upload/setting/', $filename);
+            $save->lofooter_payment_icongo = trim($filename);                
+        }          
+        $save->save();
+
+        return redirect()->back()->with('success', "Setting successfully updated");
+        
     }
 
 }

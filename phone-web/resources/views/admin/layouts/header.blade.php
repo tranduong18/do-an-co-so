@@ -265,6 +265,24 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{url('admin/contactus') }}" class="nav-link @if(Request::segment(2) == 'contactus') active @endif">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Contact Us
+            </p>
+          </a>
+        </li>
+
+          
+          <li class="nav-item">
+              <a href="{{url('admin/system-setting')}}" class="nav-link @if(Request::segment(2) == 'system-setting') active @endif">
+                  <i class="nav-icon fas fa-list-alt"></i>
+                  <p>
+                      System Setting
+                  </p>
+              </a>
+          </li>
 
         <li class="nav-item">
           <a href="{{url('admin/logout')}}" class="nav-link">
