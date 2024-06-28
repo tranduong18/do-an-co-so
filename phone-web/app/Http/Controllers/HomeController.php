@@ -14,7 +14,7 @@ use App\Mail\ContactUsMail;
 use Session;
 use Auth;
 use Mail;
-use App\Models\SystemSettingModel;
+
 
 class HomeController extends Controller
 {
