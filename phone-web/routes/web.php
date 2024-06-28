@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController as ProductFront;
@@ -65,7 +67,6 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
     //customer
     Route::get('admin/customer/list', [AdminController::class, 'customer_list']);
-
     //category
     Route::get('admin/category/list', [CategoryController::class, 'list']);
     Route::get('admin/category/add', [CategoryController::class, 'add']);
@@ -73,6 +74,20 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::get('admin/category/edit/{id}', [CategoryController::class, 'edit']);
     Route::post('admin/category/edit/{id}', [CategoryController::class, 'update']);
     Route::get('admin/category/delete/{id}', [CategoryController::class, 'delete']);
+    //Blog category
+    Route::get('admin/blog_category/list', [BlogCategoryController::class, 'list']);
+    Route::get('admin/blog_category/add', [BlogCategoryController::class, 'add']);
+    Route::post('admin/blog_category/add', [BlogCategoryController::class, 'insert']);
+    Route::get('admin/blog_category/edit/{id}', [BlogCategoryController::class, 'edit']);
+    Route::post('admin/blog_category/edit/{id}', [BlogCategoryController::class, 'update']);
+    Route::get('admin/blog_category/delete/{id}', [BlogCategoryController::class, 'delete']);
+    //Blog
+    Route::get('admin/blog/list', [BlogController::class, 'list']);
+    Route::get('admin/blog/add', [BlogController::class, 'add']);
+    Route::post('admin/blog/add', [BlogController::class, 'insert']);
+    Route::get('admin/blog/edit/{id}', [BlogController::class, 'edit']);
+    Route::post('admin/blog/edit/{id}', [BlogController::class, 'update']);
+    Route::get('admin/blog/delete/{id}', [BlogController::class, 'delete']);
     //sub-category
     Route::get('admin/sub_category/list', [SubCategoryController::class, 'list']);
     Route::get('admin/sub_category/add', [SubCategoryController::class, 'add']);
@@ -129,7 +144,6 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::get('admin/slider/edit/{id}', [SliderController::class, 'edit']);
     Route::post('admin/slider/edit/{id}', [SliderController::class, 'update']);
     Route::get('admin/slider/delete/{id}', [SliderController::class, 'delete']);
-
     //Partner
     Route::get('admin/partner/list', [PartnerController::class, 'list']);
     Route::get('admin/partner/add', [PartnerController::class, 'add']);
@@ -137,8 +151,7 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     Route::get('admin/partner/edit/{id}', [PartnerController::class, 'edit']);
     Route::post('admin/partner/edit/{id}', [PartnerController::class, 'update']);
     Route::get('admin/partner/delete/{id}', [PartnerController::class, 'delete']);
-    
-    
+    //Page
     Route::post('admin/page/upload', [PageController::class, 'insert']);
     Route::get('admin/page/list', [PageController::class, 'list']);
     Route::get('admin/page/edit/{id}', [PageController::class, 'edit']);
@@ -146,7 +159,7 @@ Route::get('admin/logout', [AuthController::class, 'logout_admin']);
     
 });
 
-
+//Page
 Route::get('/', [HomeController::class, 'home']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::get('about', [HomeController::class, 'about']);

@@ -16,4 +16,4 @@
             <a class="nav-link " href="{{url('user_logout')}}">Logout</a>
         </li>
     </ul>
-</aside><!-- End .col-lg-3 -->
+</aside>

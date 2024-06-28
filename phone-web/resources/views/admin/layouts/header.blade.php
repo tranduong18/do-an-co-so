@@ -221,32 +221,50 @@
           </a>
         </li>
 
-          <li class="nav-item">
-              <a href="{{url('admin/slider/list')}}" class="nav-link @if(Request::segment(2) == 'slider') active @endif">
-                  <i class="nav-icon fas fa-list-alt"></i>
-                  <p>
-                      Slider
-                  </p>
-              </a>
-          </li>
-         
+        <li class="nav-item">
+          <a href="{{url('admin/slider/list')}}" class="nav-link @if(Request::segment(2) == 'slider') active @endif">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Slider
+            </p>
+          </a>
+        </li>
 
-          <li class="nav-item">
-              <a href="{{url('admin/partner/list')}}" class="nav-link @if(Request::segment(2) == 'partner') active @endif">
-                  <i class="nav-icon fas fa-list-alt"></i>
-                  <p>
-                      Partner Logo
-                  </p>
-              </a>
-          </li>
-          <li class="nav-item">
-              <a href="{{url('admin/page/list')}}" class="nav-link @if(Request::segment(2) == 'page') active @endif">
-                  <i class="nav-icon fas fa-list-alt"></i>
-                  <p>
-                      Page
-                  </p>
-              </a>
-          </li>
+
+        <li class="nav-item">
+          <a href="{{url('admin/partner/list')}}" class="nav-link @if(Request::segment(2) == 'partner') active @endif">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Partner Logo
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url('admin/page/list')}}" class="nav-link @if(Request::segment(2) == 'page') active @endif">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Page
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{url('admin/blog_category/list')}}" class="nav-link @if(Request::segment(2) == 'blog_category') active @endif">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Blog Category
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{url('admin/blog/list')}}" class="nav-link @if(Request::segment(2) == 'blog') active @endif">
+            <i class="nav-icon fas fa-list-alt"></i>
+            <p>
+              Blog
+            </p>
+          </a>
+        </li>
 
         <li class="nav-item">
           <a href="{{url('admin/logout')}}" class="nav-link">
