@@ -23,38 +23,54 @@
                 			<div class="row">
                 				<div class="col-sm-7">
                 					<div class="contact-info">
-                						<h3>The Office</h3>
+                						
 
                 						<ul class="contact-list">
+											@if(!empty($getSystemSettingApp->address))
                 							<li>
                 								<i class="icon-map-marker"></i>
-	                							70 Washington Square South New York, NY 10012, United States
+	                							{{$getSystemSettingApp->address}}
 	                						</li>
+											@endif
+											@if(!empty($getSystemSettingApp->phone))
                 							<li>
                 								<i class="icon-phone"></i>
-                								<a href="tel:#">+92 423 567</a>
+                								<a href="tel:{{$getSystemSettingApp->phone}}">{{$getSystemSettingApp->phone}}</a>
                 							</li>
+											@endif
+											@if(!empty($getSystemSettingApp->phone_two))
+                							<li>
+                								<i class="icon-phone"></i>
+                								<a href="tel:{{$getSystemSettingApp->phone_two}}">{{$getSystemSettingApp->phone_two}}</a>
+                							</li>
+											@endif
+											@if(!empty($getSystemSettingApp->mail))
                 							<li>
                 								<i class="icon-envelope"></i>
-                								<a href="mailto:#">info@Molla.com</a>
+                								<a href="mailto:{{$getSystemSettingApp->mail}}">{{$getSystemSettingApp->mail}}</a>
                 							</li>
+											@endif
+											@if(!empty($getSystemSettingApp->mail_two))
+                							<li>
+                								<i class="icon-envelope"></i>
+                								<a href="mailto:{{$getSystemSettingApp->mail_two}}">{{$getSystemSettingApp->mail_two}}</a>
+                							</li>
+											@endif
                 						</ul><!-- End .contact-list -->
                 					</div><!-- End .contact-info -->
                 				</div><!-- End .col-sm-7 -->
 
                 				<div class="col-sm-5">
                 					<div class="contact-info">
-                						<h3>The Office</h3>
+                						
 
                 						<ul class="contact-list">
+											@if(!empty($getSystemSetting->working_hour))
                 							<li>
                 								<i class="icon-clock-o"></i>
-	                							<span class="text-dark">Monday-Saturday</span> <br>11am-7pm ET
+	                							{{$getSystemSetting->working_hour}}
 	                						</li>
-                							<li>
-                								<i class="icon-calendar"></i>
-                								<span class="text-dark">Sunday</span> <br>11am-6pm ET
-                							</li>
+											@endif
                 						</ul><!-- End .contact-list -->
                 					</div><!-- End .contact-info -->
                 				</div><!-- End .col-sm-5 -->

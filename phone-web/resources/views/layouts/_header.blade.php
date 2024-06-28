@@ -1,15 +1,7 @@
 <header class="header">
             <div class="header-top">
                 <div class="container">
-                    <div class="header-left">
-                        <div class="header-dropdown">
-                            <a href="#">Usd</a>
-                            <div class="header-menu">
-                                <ul>
-                                    <li><a href="#">Usd</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="header-left">          
 
                         <div class="header-dropdown">
                             <a href="#">Eng</a>
@@ -26,7 +18,7 @@
                             <li>
                                 <a href="#">Links</a>
                                 <ul>
-                                    <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
+                                    <li><a href="tel:{{$getSystemSettingApp->phone}}"><i class="icon-phone"></i>Call: {{$getSystemSettingApp->phone}}</a></li>
                                     @if(!empty(Auth::check()))
                                         <li><a href="{{url('my-wishlist')}}"><i class="icon-heart-o"></i>My Wishlist</a></li>
                                     @else
@@ -55,7 +47,7 @@
                         </button>
 
                         <a href="{{url('')}}" class="logo">
-                            <img src="{{url('assets/images/logo.png')}}" alt="" width="105" height="25">
+                            <img src="{{$getSystemSettingApp->getLogo()}}" alt="" width="105" height="25">
                         </a>
 
                         <nav class="main-nav">

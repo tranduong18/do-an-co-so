@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\SliderModel;
 use App\Models\PartnerModel;
 use App\Models\PageModel;
+use App\Models\SystemSettingModel;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,7 @@ class HomeController extends Controller
     public function contact(){
         $getPage = PageModel::getSlug('contact');
         $data['getPage'] = $getPage;
-
+        $data['getSystemSetting'] = SystemSettingModel::getSingle();
         $data['meta_title']=$getPage->meta_title;
         $data['meta_keyword']=$getPage->meta_description;
         $data['meta_description']=$getPage->meta_keywords;
