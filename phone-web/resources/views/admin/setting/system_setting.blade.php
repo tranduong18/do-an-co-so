@@ -52,20 +52,11 @@
                                         <label>Footer Description<span style="color: red;"></span></label>
                                         <textarea name="footer_description" class="form-control">{{ $getRecord->footer_description }}</textarea>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>Footer Payment Icon<span style="color: red;"></span></label>
-                                        <textarea type="file" name="footer_payment_icon" class="form-control"></textarea>
-                                        @if (!empty($getRecord->getFooterPayment()))
-                                        <img src="{{ $getRecord->getFooterPayment() }}" style="width: 200px;">
-                                        @endif
-                                    </div>
-
                                     <hr />
 
                                     <div class="form-group">
                                         <label>Address<span style="color: red;"></span></label>
-                                        <textarea name="address" class="form-control">{{ $getRecord->address }}</textarea>
+                                        <textarea name="address" class="form-control">{{ $getRecord->addres }}</textarea>
                                     </div>
 
                                     <div class="form-group">

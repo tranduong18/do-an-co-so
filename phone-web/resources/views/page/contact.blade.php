@@ -23,37 +23,35 @@
                 			<div class="row">
                 				<div class="col-sm-7">
                 					<div class="contact-info">
-                						
-
                 						<ul class="contact-list">
-											@if(!empty($getSystemSettingApp->address))
+											@if(!empty($getSystemSetting->addres))
                 							<li>
                 								<i class="icon-map-marker"></i>
-	                							{{$getSystemSettingApp->address}}
+	                							{{$getSystemSetting->addres}}
 	                						</li>
 											@endif
-											@if(!empty($getSystemSettingApp->phone))
+											@if(!empty($getSystemSetting->phone))
                 							<li>
                 								<i class="icon-phone"></i>
-                								<a href="tel:{{$getSystemSettingApp->phone}}">{{$getSystemSettingApp->phone}}</a>
+                								<a href="tel:{{$getSystemSetting->phone}}">{{$getSystemSetting->phone}}</a>
                 							</li>
 											@endif
-											@if(!empty($getSystemSettingApp->phone_two))
+											@if(!empty($getSystemSetting->phone_two))
                 							<li>
                 								<i class="icon-phone"></i>
-                								<a href="tel:{{$getSystemSettingApp->phone_two}}">{{$getSystemSettingApp->phone_two}}</a>
+                								<a href="tel:{{$getSystemSetting->phone_two}}">{{$getSystemSetting->phone_two}}</a>
                 							</li>
 											@endif
-											@if(!empty($getSystemSettingApp->mail))
+											@if(!empty($getSystemSetting->email))
                 							<li>
                 								<i class="icon-envelope"></i>
-                								<a href="mailto:{{$getSystemSettingApp->mail}}">{{$getSystemSettingApp->mail}}</a>
+                								<a href="mailto:{{$getSystemSetting->mail}}">{{$getSystemSetting->email}}</a>
                 							</li>
 											@endif
-											@if(!empty($getSystemSettingApp->mail_two))
+											@if(!empty($getSystemSetting->email_two))
                 							<li>
                 								<i class="icon-envelope"></i>
-                								<a href="mailto:{{$getSystemSettingApp->mail_two}}">{{$getSystemSettingApp->mail_two}}</a>
+                								<a href="mailto:{{$getSystemSetting->mail_two}}">{{$getSystemSetting->email_two}}</a>
                 							</li>
 											@endif
                 						</ul><!-- End .contact-list -->
@@ -98,7 +96,7 @@
                 				<div class="row">
                 					<div class="col-sm-6">
                                         <label for="cphone" class="sr-only">Phone</label>
-                						<input type="tel" class="form-control" name="photo" id="cphone" placeholder="Phone" >
+                						<input type="tel" class="form-control" name="phone" id="cphone" placeholder="Phone" >
                 					</div><!-- End .col-sm-6 -->
 
                 					<div class="col-sm-6">
@@ -108,7 +106,7 @@
                 				</div><!-- End .row -->
 
                                 <label for="cmessage" class="sr-only">Message</label>
-                				<textarea class="form-control" cols="30" rows="4" name="messsage" id="cmessage" required placeholder="Message *"></textarea>
+                				<textarea class="form-control" cols="30" rows="4" name="message" id="cmessage" required placeholder="Message *"></textarea>
 
 								<div class="row">
                 					<div class="col-sm-12">

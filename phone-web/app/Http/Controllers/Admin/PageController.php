@@ -7,8 +7,8 @@ use App\Models\PageModel;
 use App\Models\ContactUsModel;
 
 use App\Models\SystemSettingModel;
-use Auth;
-use Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 class PageController extends Controller
 {
     public function contactus()
@@ -72,8 +72,8 @@ class PageController extends Controller
         $save = SystemSettingModel::getSingle();
         $save->website_name = trim($request->website_name);
         $save->footer_description = trim($request->footer_description);
-        $save->address = trim($request->address);
-        $save->phone = trim($request->rating);
+        $save->addres = trim($request->address);
+        $save->phone = trim($request->phone);
         $save->phone_two = trim($request->phone_two);
         $save->submit_email = trim($request->submit_email);
         $save->email = trim($request->email);
@@ -104,16 +104,6 @@ class PageController extends Controller
             $file->move('upload/setting/', $filename);
             $save->fevicon = trim($filename);                
         }
-
-        if(!empty($request->file('footer_payment_icon')))
-        {
-            $file = $request->file('footer_payment_icon');
-            $ext = $file->getClientOriginalExtension();
-            $randomStr = Str::random(10);
-            $filename = strtolower($randomStr).'.'.$ext;
-            $file->move('upload/setting/', $filename);
-            $save->lofooter_payment_icongo = trim($filename);                
-        }          
         $save->save();
 
         return redirect()->back()->with('success', "Setting successfully updated");

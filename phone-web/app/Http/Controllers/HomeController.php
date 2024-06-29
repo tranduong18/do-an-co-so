@@ -11,8 +11,8 @@ use App\Models\PageModel;
 use App\Models\ContactUsModel;
 use App\Models\SystemSettingModel;
 use App\Mail\ContactUsMail;
-use Session;
-use Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 
 
@@ -69,25 +69,26 @@ class HomeController extends Controller
             {
                 $save->user_id = Auth::user()->id;
             }
-            $save ->name = trim($request->name);
-            $save ->email = trim($request->email);
-            $save ->phone = trim($request->phone);
-            $save ->subject = trim($request->subject);
-            $save ->message = trim($request->message);
-            $save ->save();
+            $save->name = trim($request->name);
+            $save->email = trim($request->email);
+            $save->phone = trim($request->phone);
+            $save->subject = trim($request->subject);
+            $save->message = trim($request->message);
+            
+            $save->save();
             
             // $getSystemSetting = SystemSettingModel::getSingle();
             // Mail::to($getSystemSetting->submit_email)->send(new ContactUsMail($save));
             
-            return redirect()->back()->with('success', "Your  information successfully send.");
+            return redirect()->back()->with('success', "Your information successfully send.");
         }
         else
         {
-            return redirect()->back()->with('error', "Your  verification sum is wrong.");
+            return redirect()->back()->with('error', "Your verification sum is wrong.");
         }
      }
      else{
-        return redirect()->back()->with('error', "Your  verification sum is wrong.");
+        return redirect()->back()->with('error', "Your verification sum is wrong.");
      }
         
 

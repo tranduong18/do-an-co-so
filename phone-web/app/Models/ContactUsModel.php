@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Request;
+use Illuminate\Support\Facades\Request;
 class ContactUsModel extends Model
 {
     use HasFactory;
@@ -42,6 +42,6 @@ class ContactUsModel extends Model
         return $return;
     }
     public function getUser(){
-        return $this->belongsTo(User::class, 'user_id   ');
+        return $this->belongsTo(User::class, 'id');
     }
 }

@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <h1>Contact Us</h1>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -36,7 +36,7 @@
                                             <input type="text" name="id" placeholder="ID" class="form-control" value="{{Request::get('id')}}">
                                         </div>
                                     </div>
-                                   
+
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Name</label>
@@ -55,7 +55,7 @@
                                             <input type="text" name="phone" placeholder="Phone  " class="form-control" value="{{Request::get('phone')}}">
                                         </div>
                                     </div>
-                                 
+
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Subject</label>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </form>
-                             <div class="card">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Contact Us</h3>
                         </div>
@@ -88,14 +88,14 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Login Name</th> 
-                                        <th>Name</th> 
-                                        <th>Email</th> 
-                                        <th>Phone</th> 
-                                        <th>Subject</th> 
-                                        <th>Message</th>      
-                                        <th>Created Date</th>                     
-               
+                                        <th>Login Name</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Created Date</th>
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -103,17 +103,15 @@
                                     @foreach($getRecord as $value)
                                     <tr>
                                         <td>{{$value->id}}</td>
-                                        <td>{{!empty($value->getUser) ? $value->getUser->name : ''}}</td> 
-                                        <td>{{$value->name}}</td> 
-                                        <td>{{$value->email}}</td> 
-                                        <td>{{$value->phone}}</td> 
-                                        <td>{{$value->subject}}</td> 
-                                        <td>{{$value->message}}</td> 
-                                        <td>{{$value->created_at}}</td> 
+                                        <td>{{!empty($value->getUser) ? $value->getUser->name : ''}}</td>
+                                        <td>{{$value->name}}</td>
+                                        <td>{{$value->email}}</td>
+                                        <td>{{$value->phone}}</td>
+                                        <td>{{$value->subject}}</td>
+                                        <td>{{$value->message}}</td>
+                                        <td>{{$value->created_at}}</td>
                                         <td>
-                                       
-                                            <a href="{{url('admin/contactus/delete/'.$value->id)}}" class="btn btn-danger">Delete </a>
-                                        
+                                            <a onclick="return confirm('Are you want to delete?');" href="{{url('admin/contactus/delete/'.$value->id)}}" class="btn btn-danger">Delete </a>
                                         </td>
                                         @endforeach
                                     </tr>
@@ -121,7 +119,7 @@
                             </table>
                             <div style="padding: 10px; float: right;">
                                 {!!$getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
-                             
+
                             </div>
                         </div>
 
