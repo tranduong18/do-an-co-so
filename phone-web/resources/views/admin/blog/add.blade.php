@@ -33,7 +33,7 @@
 
                                 <div class="form-group">
                                     <label>Category Name <span style="color: red;">*</span></label>
-                                    <select name="category_id" class="form-control" required>
+                                    <select name="blog_category_id" class="form-control" required>
                                         <option value="">Select</option>
                                         @foreach($getCategory as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -44,6 +44,11 @@
                                 <div class="form-group">
                                     <label>Image <span style="color: red;">*</span></label>
                                     <input type="file" class="form-control" name="image_name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Short Description <span style="color: red;">*</span></label>
+                                    <textarea name="short_description" class="form-control" required></textarea>
                                 </div>
 
                                 <div class="form-group">

@@ -37,6 +37,7 @@
 	            					<li><a href="{{url('about')}}">About Us</a></li>
 	            					<li><a href="{{url('faq')}}">FAQ</a></li>
 	            					<li><a href="{{url('contact')}}">Contact us</a></li>
+									<li><a href="{{url('blog')}}">Blog</a></li>
 									@if(empty(Auth::check()))
 	            					<li><a href="#signin-modal" data-toggle="modal">Log in</a></li>
 									@endif

@@ -28,12 +28,14 @@ class BlogController extends Controller
         $blog->title = trim($request->title);
         $blog->blog_category_id = trim($request->blog_category_id);
         $blog->status = trim($request->status);
+        $blog->short_description = trim($request->short_description);
         $blog->description = trim($request->description);
         $blog->meta_title = trim($request->meta_title);
         $blog->meta_description = trim($request->meta_description);
         $blog->meta_keywords = trim($request->key_words);
 
         if(!empty($request->file('image_name'))){
+            unlink('upload/blog/'.$blog->image_name);
             $file = $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);
@@ -67,6 +69,7 @@ class BlogController extends Controller
         $blog->title = trim($request->title);
         $blog->blog_category_id = trim($request->blog_category_id);
         $blog->status = trim($request->status);
+        $blog->short_description = trim($request->short_description);
         $blog->description = trim($request->description);
         $blog->meta_title = trim($request->meta_title);
         $blog->meta_description = trim($request->meta_description);

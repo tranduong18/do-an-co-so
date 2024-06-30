@@ -50,6 +50,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Short Description <span style="color: red;">*</span></label>
+                                    <textarea name="short_description" class="form-control" required>{{$getRecord->short_description}}</textarea>
+                                </div>
+
+                                <div class="form-group">
                                     <label>Description <span style="color: red;">*</span></label>
                                     <textarea name="description" class="form-control editor">{{$getRecord->description}}</textarea>
                                 </div>

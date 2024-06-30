@@ -235,8 +235,4 @@ class PaymentController extends Controller
             abort(404);
         }
     }
-
-    public function paypal_success_payment(Request $request){
-        dd($request->all());
-    }
 }

@@ -44,4 +44,11 @@ class BlogCategoryModel extends Model
             ->orderBy('blog_category.id', 'asc')
             ->get();
     }
+
+    public function getCountBlog(){
+        return $this->hasMany(BlogModel::class, 'blog_category_id')
+                    ->where('blog.is_delete', '=', 0)
+                    ->where('blog.status', '=', 0)
+                    ->count();
+    }
 }

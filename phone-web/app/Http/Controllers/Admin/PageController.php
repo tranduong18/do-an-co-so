@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PageModel;
@@ -9,6 +10,7 @@ use App\Models\ContactUsModel;
 use App\Models\SystemSettingModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+
 class PageController extends Controller
 {
     public function contactus()
@@ -34,8 +36,8 @@ class PageController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = PageModel::getSingle($id);
-        $data['header_title'] ='Edit Page';
-        return view('admin.page.edit',$data);
+        $data['header_title'] = 'Edit Page';
+        return view('admin.page.edit', $data);
     }
 
     public function update($id, Request $request)
@@ -47,24 +49,24 @@ class PageController extends Controller
         $page->meta_title = trim($request->meta_title);
         $page->meta_description = trim($request->meta_description);
         $page->meta_keywords = trim($request->meta_keywords);
-                if(!empty($request->file('image_name')))
-                {
-                    $file = $request->file('image_name');
-                    $ext = $file->getClientOriginalExtension();
-                    $randomStr = $page->id.Str::random(20);
-                    $filename = strtolower($randomStr).'.'.$ext;
-                    $file->move('upload/page/', $filename);
-                    $page->image_name = trim($filename);
-                 
-                }   
-        $page -> save();
+        
+        if (!empty($request->file('image_name'))) {
+            unlink('upload/page/'.$page->image_name);
+            $file = $request->file('image_name');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = $page->id . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/page/', $filename);
+            $page->image_name = trim($filename);
+        }
+        $page->save();
         return redirect('admin/page/list')->with('success', "Page Charge successfully updated");
     }
     public function system_setting()
     {
         $data['getRecord'] = SystemSettingModel::getSingle();
-        $data['header_title'] ='System Setting';
-        return view('admin.setting.system_setting',$data);
+        $data['header_title'] = 'System Setting';
+        return view('admin.setting.system_setting', $data);
     }
 
     public function update_system_setting(Request $request)
@@ -85,29 +87,27 @@ class PageController extends Controller
         $save->youtube_link = trim($request->youtube_link);
         $save->pinterest_link = trim($request->pinterest_link);
 
-        if(!empty($request->file('logo')))
-        {
+        if (!empty($request->file('logo'))) {
+            unlink('upload/setting/'.$save->image_name);
             $file = $request->file('logo');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(10);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/setting/', $filename);
-            $save->logo = trim($filename);                
+            $save->logo = trim($filename);
         }
 
-        if(!empty($request->file('fevicon')))
-        {
+        if (!empty($request->file('fevicon'))) {
+            unlink('upload/setting/'.$save->fevicon);
             $file = $request->file('fevicon');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(10);
-            $filename = strtolower($randomStr).'.'.$ext;
+            $filename = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/setting/', $filename);
-            $save->fevicon = trim($filename);                
+            $save->fevicon = trim($filename);
         }
         $save->save();
 
         return redirect()->back()->with('success', "Setting successfully updated");
-        
     }
-
 }

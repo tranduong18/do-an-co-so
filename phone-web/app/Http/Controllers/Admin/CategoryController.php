@@ -38,6 +38,7 @@ class CategoryController extends Controller
         $category->button_name = trim($request->button_name);
         $category->is_home = !empty($request->is_home) ? 1 : 0;
         if(!empty($request->file('image_name'))){
+            unlink('upload/category/'.$category->image_name);
             $file= $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);

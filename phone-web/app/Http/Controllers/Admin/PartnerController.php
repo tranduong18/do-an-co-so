@@ -50,6 +50,7 @@ class PartnerController extends Controller
 
         $partner->button_link = trim($request->button_link);
         if(!empty($request->file('image_name'))){
+            unlink('upload/partner/'.$partner->image_name);
             $file= $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);

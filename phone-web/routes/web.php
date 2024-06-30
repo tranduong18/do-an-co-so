@@ -40,22 +40,26 @@ Route::get('admin', [AuthController::class, 'login_admin']);
 Route::post('admin', [AuthController::class, 'auth_login_admin']);
 Route::get('admin/logout', [AuthController::class, 'logout_admin']);
 
-    Route::group(['middleware' => 'user'], function(){
+Route::group(['middleware' => 'user'], function(){
     Route::get('user/dashboard', [UserController::class, 'dashboard']);
     Route::get('user/orders', [UserController::class, 'orders']);
     Route::get('user/orders/detail/{id}', [UserController::class, 'orders_detail']);
 
     Route::get('user/edit-profile', [UserController::class, 'edit_profile']);
     Route::post('user/edit-profile', [UserController::class, 'update_profile']);
+    
     Route::get('user/change-password', [UserController::class, 'change_password']);
     Route::post('user/change-password', [UserController::class, 'update_password']);
 
     Route::get('my-wishlist', [ProductFront::class, 'my_wishlist']);
     Route::post('add_to_wishlist', [UserController::class, 'add_to_wishlist']);
+    
     Route::post('user/make-review', [UserController::class, 'submit_review']);
+
+    Route::post('blog/submit_comment', [HomeController::class, 'submit_blog_comment']);
 });
 
-    Route::group(['middleware' => 'admin'], function(){
+Route::group(['middleware' => 'admin'], function(){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
     //admin
@@ -177,6 +181,10 @@ Route::get('returns', [HomeController::class, 'return']);
 Route::get('shipping', [HomeController::class, 'shipping']);  
 Route::get('terms-condition', [HomeController::class, 'terms_condition']); 
 Route::get('privacy-policy', [HomeController::class, 'privacy_policy']); 
+//Blog
+Route::get('blog', [HomeController::class, 'blog']);
+Route::get('blog/{slug}', [HomeController::class, 'blog_detail']);
+Route::get('blog/category/{slug}', [HomeController::class, 'blog_category']);
 //Cart
 Route::post('product/add-to-cart', [PaymentController::class, 'add_to_cart']);
 Route::get('cart', [PaymentController::class, 'cart']);
