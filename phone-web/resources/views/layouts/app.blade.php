@@ -19,7 +19,7 @@
     @endphp
 
     <meta name="author" content="p-themes">
-    <link rel="shortcut icon" href="{{ $getSystemSettingApp->getFevicon() }}">
+    <link rel="shortcut icon" href="{{ $getSystemSettingApp->getFevicon() }}">  
 
     <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/plugins/owl-carousel/owl.carousel.css')}}">
