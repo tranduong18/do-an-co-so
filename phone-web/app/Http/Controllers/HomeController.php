@@ -40,6 +40,11 @@ class HomeController extends Controller
         return view('home', $data);
     }
 
+    public function recent_arrival_category_product(Request $request)
+    {
+        dd($request ->all());
+    }
+
     public function contact()
     {
 

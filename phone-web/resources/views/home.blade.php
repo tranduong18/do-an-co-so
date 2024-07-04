@@ -189,13 +189,21 @@
                     <h2 class="title">Recent Arrivals</h2><!-- End .title -->
 
                     <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
+                    <li class="nav-item">
+                            <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">OutDoor Store</a>
+                            
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
+                            
                         </li>
                         @foreach($getCategory as $category)
                         <li class="nav-item">
-                            <a class="nav-link" id="top-{{$category->slug}}-link" data-toggle="tab" href="#top-{{$category->slug}}-tab" role="tab" aria-controls="top-{{$category->slug}}-tab" aria-selected="false">{{$category->name}}</a>
+                            <a class="nav-link getCategoryProduct" data-val="{{$category->id}}" id="top-{{$category->slug}}-link" data-toggle="tab" href="#top-{{$category->slug}}-tab" role="tab" aria-controls="top-{{$category->slug}}-tab" aria-selected="false">{{$category->name}}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
+                            
                         @endforeach
                        
                     </ul>
@@ -431,4 +439,26 @@
         </div><!-- End .cta -->
         @endif
 </main>
+@endsection
+@section('script')
+<script type="text/javascript">
+        $('body').delegate('.getCategoryProduct', 'click',function(){
+   
+            var category_id =$(this).attr('data-val');
+            console.log(category_id);
+
+            $.ajax({
+                url: "{{url('recent_arrival_category_product') }}",
+                type:"POST",
+                data:{
+                    "_token": "{{csrf_token()}}",
+                    category_id:category_id,
+                },
+                dataType:"json",
+                success:function(reponse){
+                },
+                
+            });
+        });
+</script>
 @endsection

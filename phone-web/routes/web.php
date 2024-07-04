@@ -171,6 +171,7 @@ Route::group(['middleware' => 'admin'], function(){
 
 //Page
 Route::get('/', [HomeController::class, 'home']);
+Route::post('recent_arrival_category_product', [HomeController::class, 'recent_arrival_category_product']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::post('contact', [HomeController::class, 'submit_contact']);
 Route::get('about', [HomeController::class, 'about']);
