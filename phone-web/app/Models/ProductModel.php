@@ -59,7 +59,27 @@ class ProductModel extends Model
             ->paginate(10);
         return $return;
     }
+    static public function getRecentArrival(){
+        $return = ProductModel::select(
+            'product.*',
+            'users.name as created_by_name',
+            'sub_category.name as sub_category_name',
+            'sub_category.slug as sub_category_slug',
+            'category.name as category_name',
+            'category.slug as category_slug'
+        )
+            ->join('users', 'users.id', '=', 'product.created_by')
+            ->join('category', 'category.id', '=', 'product.category_id')
+            ->join('sub_category', 'sub_category.id', '=', 'product.sub_category_id')
+            ->where('product.is_delete', '=', 0)
+            ->where('product.status', '=', 0)
+            ->groupBy('product.id')
+            ->orderBy('product.id', 'desc')
+            ->limit(6);
 
+ 
+        return $return;
+    }
     static public function getProduct($category_id = '', $subcategory_id = '')
     {
         $return = ProductModel::select(

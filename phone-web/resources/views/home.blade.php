@@ -184,6 +184,132 @@
         @endif
 
 
+        <div class="container">
+                <div class="heading heading-center mb-6">
+                    <h2 class="title">Recent Arrivals</h2><!-- End .title -->
+
+                    <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
+                        </li>
+                        @foreach($getCategory as $category)
+                        <li class="nav-item">
+                            <a class="nav-link" id="top-{{$category->slug}}-link" data-toggle="tab" href="#top-{{$category->slug}}-tab" role="tab" aria-controls="top-{{$category->slug}}-tab" aria-selected="false">{{$category->name}}</a>
+                        </li>
+                        @endforeach
+                       
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
+                        <div class="products">
+                            @php
+                                $is_home=1;
+                            @endphp
+                            @include('product._list')
+                         
+                        </div><!-- End .products -->
+                        <div class="more-container text-center">
+                    <a href="{{url('search')}}" class="btn btn-outline-darker btn-more"><span>Load more products</span><i class="icon-long-arrow-down"></i></a>
+                    </div>
+                </div><!-- End .more-container -->
+                    </div>
+                    @foreach($getCategory as $category)
+                    <div class="tab-pane p-0 fade" id="top-$category->slug-tab" role="tabpanel" aria-labelledby="top-$category->slug-link">
+                        <div class="products">
+                            <div class="row justify-content-center">
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <div class="product product-11 mt-v3 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-new">NEW</span>
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-9-1.jpg" alt="Product image" class="product-image">
+                                                <img src="assets/images/demos/demo-2/products/product-9-2.jpg" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Garden Armchair</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $94,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <div class="product product-11 mt-v3 text-center">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-12-1.jpg" alt="Product image" class="product-image">
+                                                <img src="assets/images/demos/demo-2/products/product-12-2.jpg" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $229,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                            </div><!-- End .product-nav -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                                
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <div class="product product-11 mt-v3 text-center">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-13-1.jpg" alt="Product image" class="product-image">
+                                                <img src="assets/images/demos/demo-2/products/product-13-2.jpg" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">2-Seater</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $3.107,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .products -->
+                        <div class="more-container text-center">
+                    <a href="{{url('search')}}" class="btn btn-outline-darker btn-more"><span>Load more products</span><i class="icon-long-arrow-down"></i></a>
+                    </div>
+                    </div>
+                    @endforeach
+             
+                </div><!-- End .tab-content -->
+             
+            </div><!-- End .container -->
 
         <div class="container">
             <hr>

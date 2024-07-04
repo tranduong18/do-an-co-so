@@ -27,6 +27,8 @@ class HomeController extends Controller
         $data['getSlider'] = SliderModel::getRecordActive();
         $data['getPartner'] = PartnerModel::getRecordActive();
         $data['getCategory'] = CategoryModel::getRecordActiveHome();
+        
+        $data['getProduct'] = ProductModel::getRecentArrival();
         $data['getProductTrendy'] = ProductModel::getProductTrendy();
 
         $getPage = PageModel::getSlug('home');

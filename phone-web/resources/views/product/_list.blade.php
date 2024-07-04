@@ -5,7 +5,8 @@
         $getProductImage = $value->getImageSingle($value->id)
         @endphp
 
-        <div class="col-12 col-md-4 col-lg-4">
+      
+        <div class="col-12 @if(!empty($is_home)) col-md-3 col-lg-3 @else col-md-4 col-lg-4  @endif">
             <div class="product product-7 text-center">
                 <figure class="product-media">
                     <a href="{{url($value->slug)}}">
