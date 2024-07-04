@@ -277,8 +277,6 @@
 
 @section('script')
 <script src="{{url('assets/sortable/jquery-ui.js')}}"></script>
-<script src="https://cdn.tiny.cloud/1/4iows4vcke9wipc0ikudaj8dln0du6wgqialp8xpjnizjr86/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-<script src="{{url('tinymce/tinymce-jquery.min.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $("#sortable").sortable({
@@ -307,18 +305,6 @@
             }
         });
     });
-
-    $('.editor').tinymce({
-        height: 200,
-        menubar: false,
-        plugins: [
-            'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'markdown',
-            'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-            'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
-        ],
-        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist checklist outdent indent | removeformat | code table help'
-    });
-
     var i = 101;
 
     $('body').delegate('.AddSize', 'click', function() {

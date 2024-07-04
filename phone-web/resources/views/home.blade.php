@@ -141,9 +141,9 @@
                             </div>
                             <div class="ratings-container">
                                 <div class="ratings">
-                                    <div class="ratings-val" style="width: 20%;"></div>
+                                    <div class="ratings-val" style="width: {{$value->getReviewRating($value->id)}};"></div>
                                     < </div>
-                                        <span class="ratings-text">( 2 Reviews )</span>
+                                        <span class="ratings-text">( {{ $value->getTotalReview()}} Reviews )</span>
                                 </div>
                             </div>
                         </div>
@@ -154,9 +154,9 @@
             </div>
         </div>
         @endif
-        @if(!empty($getCategory->count()))
+        <!-- @if(!empty($getCategory->count()))
         <div class="container categories pt-6">
-            <h2 class="title-lg text-center mb-4">Shop by Categories</h2><!-- End .title-lg text-center -->
+            <h2 class="title-lg text-center mb-4">Shop by Categories</h2>
 
             <div class="row">
                 @foreach($getCategory as $category)
@@ -171,14 +171,14 @@
                             @if(!empty($category->button_name))
                             <a href="{{$category->slug}}" class="btn btn-outline-white banner-link">{{$category->button_name}}<i class="icon-long-arrow-right"></i></a>
                             @endif
-                        </div><!-- End .banner-content -->
-                    </div><!-- End .banner -->
+                        </div>
+                    </div>
 
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                </div>
                 @endif
                 @endforeach
-            </div><!-- End .row -->
-        </div><!-- End .container -->
+            </div>
+        </div> -->
 
         <div class="mb-5"></div><!-- End .mb-6 -->
         @endif
