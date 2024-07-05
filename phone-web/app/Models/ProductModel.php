@@ -77,10 +77,10 @@ class ProductModel extends Model
             {
                 $return = $return->where('product.category_id', '=', Request::get('category_id'));
             }
-            $return = $return->groupBy('product.id')
-            ->groupBy('product.id')
+            $return = $return
             ->orderBy('product.id', 'desc')
-            ->limit(6);
+            ->limit(6)
+            ->get();
 
  
         return $return;

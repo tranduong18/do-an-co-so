@@ -51,7 +51,7 @@ class PageController extends Controller
         $page->meta_keywords = trim($request->meta_keywords);
         
         if (!empty($request->file('image_name'))) {
-            unlink('upload/page/'.$page->image_name);
+            // unlink('upload/page/'.$page->image_name);
             $file = $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = $page->id . Str::random(20);
