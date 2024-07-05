@@ -27,10 +27,9 @@ class HomeController extends Controller
         $data['getSlider'] = SliderModel::getRecordActive();
         $data['getPartner'] = PartnerModel::getRecordActive();
         $data['getCategory'] = CategoryModel::getRecordActiveHome();
-        
+
         $data['getProduct'] = ProductModel::getRecentArrival();
         $data['getProductTrendy'] = ProductModel::getProductTrendy();
-
         $getPage = PageModel::getSlug('home');
         $data['getPage'] = $getPage;
 
@@ -42,20 +41,19 @@ class HomeController extends Controller
 
     public function recent_arrival_category_product(Request $request)
     {
-       $getProduct = ProductModel::getRecentArrival();
-       $getCategory = CategoryModel::getSingle($request->category_id);
-       return response()->json([
-        "status" => true,
-        "success" => view("product._list_recent_arrival", [
-            "getProduct" => $getProduct,
-            "getCategory" => $getCategory,
-        ])->render(),
-    ], 200);
+        $getProduct = ProductModel::getRecentArrival();
+        $getCategory = CategoryModel::getSingle($request->category_id);
+        return response()->json([
+            "status" => true,
+            "success" => view("product._list_recent_arrival", [
+                "getProduct" => $getProduct,
+                "getCategory" => $getCategory,
+            ])->render(),
+        ], 200);
     }
 
     public function contact()
     {
-
         $first_number  = mt_rand(0, 9);
         $second_number  = mt_rand(0, 9);
 
@@ -218,7 +216,8 @@ class HomeController extends Controller
         }
     }
 
-    public function blog_category($slug){
+    public function blog_category($slug)
+    {
         $getCategory = BlogCategoryModel::getSingleSlug($slug);
         if (!empty($getCategory)) {
             $data['getCategory'] =  $getCategory;
@@ -236,13 +235,14 @@ class HomeController extends Controller
         }
     }
 
-    public function submit_blog_comment(Request $request){
+    public function submit_blog_comment(Request $request)
+    {
         $comment = new BlogCommentModel;
         $comment->user_id = Auth::user()->id;
         $comment->blog_id = $request->blog_id;
         $comment->comment = trim($request->comment);
         $comment->save();
-        
+
         return redirect()->back()->with('success', "Your comment successfully sent");
     }
 }

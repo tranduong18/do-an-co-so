@@ -51,7 +51,9 @@ class PageController extends Controller
         $page->meta_keywords = trim($request->meta_keywords);
         
         if (!empty($request->file('image_name'))) {
-            // unlink('upload/page/'.$page->image_name);
+            if(!empty($page->image_name)){
+                unlink('upload/page/'.$page->image_name);
+            }
             $file = $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = $page->id . Str::random(20);
@@ -88,7 +90,9 @@ class PageController extends Controller
         $save->pinterest_link = trim($request->pinterest_link);
 
         if (!empty($request->file('logo'))) {
-            unlink('upload/setting/'.$save->image_name);
+            if(!empty($save->logo)){
+                unlink('upload/setting/'.$save->image_name);
+            }
             $file = $request->file('logo');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(10);
@@ -98,7 +102,9 @@ class PageController extends Controller
         }
 
         if (!empty($request->file('fevicon'))) {
-            unlink('upload/setting/'.$save->fevicon);
+            if(!empty($save->fevicon)){
+                unlink('upload/setting/'.$save->fevicon);
+            }
             $file = $request->file('fevicon');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(10);

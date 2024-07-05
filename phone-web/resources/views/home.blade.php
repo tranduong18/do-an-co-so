@@ -185,98 +185,92 @@
 
 
         <div class="container">
-                <div class="heading heading-center mb-6">
-                    <h2 class="title">Recent Arrivals</h2><!-- End .title -->
+            <div class="heading heading-center mb-6">
+                <h2 class="title">Recent Arrivals</h2><!-- End .title -->
 
-                    <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
-                   
-                        <li class="nav-item">
-                            <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
-                            
-                        </li>
-                        @foreach($getCategory as $category)
-                        <li class="nav-item">
-                            <a class="nav-link getCategoryProduct" data-val="{{$category->id}}" id="top-{{$category->slug}}-link" data-toggle="tab" href="#top-{{$category->slug}}-tab" role="tab" aria-controls="top-{{$category->slug}}-tab" aria-selected="false">{{$category->name}}</a>
-                        </li>
-                      
-                        @endforeach
-                       
-                    </ul>
-                </div>
+                <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
 
-                <div class="tab-content">
-                    <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
-                        <div class="products">
-                            @php
-                                $is_home=1;
-                            @endphp
-                            @include('product._list')
-                         
-                        </div><!-- End .products -->
-                        <div class="more-container text-center">
-                    <a href="{{url('search')}}" class="btn btn-outline-darker btn-more"><span>Load more products</span><i class="icon-long-arrow-down"></i></a>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
+                    </li>
+                    <!-- @foreach($getCategory as $category)
+                    <li class="nav-item">
+                        <a class="nav-link getCategoryProduct" data-val="{{$category->id}}" id="top-{{$category->slug}}-link" data-toggle="tab" href="#top-{{$category->slug}}-tab" role="tab" aria-controls="top-{{$category->slug}}-tab" aria-selected="false">{{$category->name}}</a>
+                    </li>
+                    @endforeach -->
+                </ul>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
+                    <div class="products">
+                        @php
+                            $is_home=1;
+                        @endphp
+                        @include('product._list')
+                    </div>
+                    <div class="more-container text-center">
+                        <a href="{{url('search')}}" class="btn btn-outline-darker btn-more"><span>Load more products</span><i class="icon-long-arrow-down"></i></a>
                     </div>
                 </div><!-- End .more-container -->
-                    </div>
-                    @foreach($getCategory as $category)
-                    <div class="tab-pane p-0 fade getCategoryProduct{{$category->id}}" id="top-$category->slug-tab" role="tabpanel" aria-labelledby="top-$category->slug-link">
-                    
-                    </div>
-                    @endforeach
-             
-                </div><!-- End .tab-content -->
-             
-            </div><!-- End .container -->
+            </div>
+            <!-- @foreach($getCategory as $category)
+            <div class="tab-pane p-0 fade getCategoryProduct{{$category->id}}" id="top-{{$category->slug}}-tab" role="tabpanel" aria-labelledby="top-{{$category->slug}}-link">
+            </div>
+            @endforeach -->
+        </div><!-- End .tab-content -->
 
+    </div><!-- End .container -->
+
+    <div class="container">
+        <hr>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon-box icon-box-card text-center">
+                    <span class="icon-box-icon">
+                        <i class="icon-rocket"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
+                        <p>Free shipping for orders over $50</p>
+                    </div><!-- End .icon-box-content -->
+                </div><!-- End .icon-box -->
+            </div><!-- End .col-lg-4 col-sm-6 -->
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon-box icon-box-card text-center">
+                    <span class="icon-box-icon">
+                        <i class="icon-rotate-left"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h3 class="icon-box-title">Return & Refund</h3><!-- End .icon-box-title -->
+                        <p>Free 100% money back guarantee</p>
+                    </div><!-- End .icon-box-content -->
+                </div><!-- End .icon-box -->
+            </div><!-- End .col-lg-4 col-sm-6 -->
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon-box icon-box-card text-center">
+                    <span class="icon-box-icon">
+                        <i class="icon-life-ring"></i>
+                    </span>
+                    <div class="icon-box-content">
+                        <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
+                        <p>Alway online feedback 24/7</p>
+                    </div><!-- End .icon-box-content -->
+                </div><!-- End .icon-box -->
+            </div><!-- End .col-lg-4 col-sm-6 -->
+        </div><!-- End .row -->
+
+        <div class="mb-2"></div><!-- End .mb-2 -->
+    </div><!-- End .container -->
+
+    @if(!empty($getBlog->count()))
+    <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
         <div class="container">
-            <hr>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon-box icon-box-card text-center">
-                        <span class="icon-box-icon">
-                            <i class="icon-rocket"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
-                            <p>Free shipping for orders over $50</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-lg-4 col-sm-6 -->
+            <h2 class="title-lg text-center mb-3 mb-md-4">Our Blog</h2><!-- End .title-lg text-center -->
 
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon-box icon-box-card text-center">
-                        <span class="icon-box-icon">
-                            <i class="icon-rotate-left"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Return & Refund</h3><!-- End .icon-box-title -->
-                            <p>Free 100% money back guarantee</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-lg-4 col-sm-6 -->
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon-box icon-box-card text-center">
-                        <span class="icon-box-icon">
-                            <i class="icon-life-ring"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
-                            <p>Alway online feedback 24/7</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-lg-4 col-sm-6 -->
-            </div><!-- End .row -->
-
-            <div class="mb-2"></div><!-- End .mb-2 -->
-        </div><!-- End .container -->
-
-        @if(!empty($getBlog->count()))
-        <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
-            <div class="container">
-                <h2 class="title-lg text-center mb-3 mb-md-4">Our Blog</h2><!-- End .title-lg text-center -->
-
-                <div class="owl-carousel owl-simple carousel-with-shadow" data-toggle="owl" data-owl-options='{
+            <div class="owl-carousel owl-simple carousel-with-shadow" data-toggle="owl" data-owl-options='{
                             "nav": false, 
                             "dots": true,
                             "items": 3,
@@ -294,61 +288,62 @@
                                 }
                             }
                         }'>
-                    @foreach($getBlog as $blog)
-                    <article class="entry entry-display">
-                        <figure class="entry-media">
-                            <a href="{{url('blog/'.$blog->slug)}}">
-                                <img style="height: 260px" src="{{$blog->getImage()}}" alt="{{$blog->title}}">
-                            </a>
-                        </figure><!-- End .entry-media -->
+                @foreach($getBlog as $blog)
+                <article class="entry entry-display">
+                    <figure class="entry-media">
+                        <a href="{{url('blog/'.$blog->slug)}}">
+                            <img style="height: 260px" src="{{$blog->getImage()}}" alt="{{$blog->title}}">
+                        </a>
+                    </figure><!-- End .entry-media -->
 
-                        <div class="entry-body pb-4 text-center">
-                            <div class="entry-meta">
-                                <a href="#">{{ date('M d, Y', strtotime($blog->created_at)) }}</a>, {{$blog->getCommentCount()}} Comments
-                            </div><!-- End .entry-meta -->
+                    <div class="entry-body pb-4 text-center">
+                        <div class="entry-meta">
+                            <a href="#">{{ date('M d, Y', strtotime($blog->created_at)) }}</a>, {{$blog->getCommentCount()}} Comments
+                        </div><!-- End .entry-meta -->
 
-                            <h3 class="entry-title">
-                                <a href="{{url('blog/'.$blog->slug)}}">{{$blog->title}}</a>
-                            </h3><!-- End .entry-title -->
+                        <h3 class="entry-title">
+                            <a href="{{url('blog/'.$blog->slug)}}">{{$blog->title}}</a>
+                        </h3><!-- End .entry-title -->
 
-                            <div class="entry-content">
-                                <p>{{ $blog->short_description }}</p>
-                                <a href="{{url('blog/'.$blog->slug)}}" class="read-more">Read More</a>
-                            </div><!-- End .entry-content -->
-                        </div><!-- End .entry-body -->
-                    </article>
-                    @endforeach
-                </div><!-- End .owl-carousel -->
-            </div><!-- container -->
+                        <div class="entry-content">
+                            <p>{{ $blog->short_description }}</p>
+                            <a href="{{url('blog/'.$blog->slug)}}" class="read-more">Read More</a>
+                        </div><!-- End .entry-content -->
+                    </div><!-- End .entry-body -->
+                </article>
+                @endforeach
+            </div><!-- End .owl-carousel -->
+        </div><!-- container -->
 
-            <div class="more-container text-center mb-0 mt-3">
-                <a href="{{url('blog')}}" class="btn btn-outline-darker btn-more"><span>View more articles</span><i class="icon-long-arrow-right"></i></a>
-            </div><!-- End .more-container -->
-        </div>
-        @endif
-        
-        @if(empty(Auth::check()))
-        <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url(assets/images/backgrounds/cta/bg-6.jpg);">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-9 col-xl-8">
-                        <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
-                            <div class="col">
-                                <h3 class="cta-title text-white">Sign Up & Get 10% Off</h3><!-- End .cta-title -->
-                                <p class="cta-desc text-white">Molla presents the best in interior design</p><!-- End .cta-desc -->
-                            </div><!-- End .col -->
+        <div class="more-container text-center mb-0 mt-3">
+            <a href="{{url('blog')}}" class="btn btn-outline-darker btn-more"><span>View more articles</span><i class="icon-long-arrow-right"></i></a>
+        </div><!-- End .more-container -->
+    </div>
+    @endif
 
-                            <div class="col-auto">
-                                <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white"><span>SIGN UP</span><i class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .col-auto -->
-                        </div><!-- End .row no-gutters -->
-                    </div><!-- End .col-md-10 col-lg-9 -->
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-        </div><!-- End .cta -->
-        @endif
+    @if(empty(Auth::check()))
+    <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url(assets/images/backgrounds/cta/bg-6.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-9 col-xl-8">
+                    <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
+                        <div class="col">
+                            <h3 class="cta-title text-white">Sign Up & Get 10% Off</h3><!-- End .cta-title -->
+                            <p class="cta-desc text-white">Molla presents the best in interior design</p><!-- End .cta-desc -->
+                        </div><!-- End .col -->
+
+                        <div class="col-auto">
+                            <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white"><span>SIGN UP</span><i class="icon-long-arrow-right"></i></a>
+                        </div><!-- End .col-auto -->
+                    </div><!-- End .row no-gutters -->
+                </div><!-- End .col-md-10 col-lg-9 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .cta -->
+    @endif
 </main>
 @endsection
+
 @section('script')
 <script type="text/javascript">
         $('body').delegate('.getCategoryProduct', 'click',function(){
