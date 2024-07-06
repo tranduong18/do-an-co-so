@@ -35,7 +35,6 @@ class BlogController extends Controller
         $blog->meta_keywords = trim($request->key_words);
 
         if(!empty($request->file('image_name'))){
-            unlink('upload/blog/'.$blog->image_name);
             $file = $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);
@@ -79,7 +78,6 @@ class BlogController extends Controller
             if(!empty($blog->getImage())){
                 unlink('upload/blog/'.$blog->image_name);
             }
-
             $file = $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);

@@ -52,7 +52,9 @@ class SliderController extends Controller
         $slider->button_name = trim($request->button_name);
         $slider->button_link = trim($request->button_link);
         if(!empty($request->file('image_name'))){
-            unlink('upload/slider/'.$slider->image_name);
+            if(!empty($slider->image_name)){
+                unlink('upload/slider/'.$slider->image_name);
+            }
             $file= $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
             $randomStr = Str::random(20);

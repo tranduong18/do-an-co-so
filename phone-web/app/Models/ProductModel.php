@@ -59,7 +59,8 @@ class ProductModel extends Model
             ->paginate(10);
         return $return;
     }
-    static public function getRecentArrival(){
+    static public function getRecentArrival()
+    {
         $return = ProductModel::select(
             'product.*',
             'users.name as created_by_name',
@@ -73,18 +74,16 @@ class ProductModel extends Model
             ->join('sub_category', 'sub_category.id', '=', 'product.sub_category_id')
             ->where('product.is_delete', '=', 0)
             ->where('product.status', '=', 0);
-            if(!empty(Request::get('category_id')))
-            {
-                $return = $return->where('product.category_id', '=', Request::get('category_id'));
-            }
-            $return = $return
+        if (!empty(Request::get('category_id'))) {
+            $return = $return->where('product.category_id', '=', Request::get('category_id'));
+        }
+        $return = $return
             ->orderBy('product.id', 'desc')
             ->limit(6)
             ->get();
-
- 
         return $return;
     }
+
     static public function getProduct($category_id = '', $subcategory_id = '')
     {
         $return = ProductModel::select(
@@ -234,33 +233,25 @@ class ProductModel extends Model
 
     public function getTotalReview()
     {
-        return $this->hasMany(ProductReviewModel::class,'product_id')
-                    ->join('users', 'users.id', 'product_review.user_id')
-                    ->count();    
+        return $this->hasMany(ProductReviewModel::class, 'product_id')
+            ->join('users', 'users.id', 'product_review.user_id')
+            ->count();
     }
 
     static public function getReviewRating($product_id)
     {
         $avg = ProductReviewModel::getRatingAVG($product_id);
-        if($avg >= 1 && $avg <= 1)
-        {
+        if ($avg >= 1 && $avg <= 1) {
             return 20;
-        } else if($avg >= 1 && $avg <= 2)
-        {
+        } else if ($avg >= 1 && $avg <= 2) {
             return 40;
-        }
-        else if($avg >= 1 && $avg <= 3)
-        {
+        } else if ($avg >= 1 && $avg <= 3) {
             return 60;
-        }
-        else if($avg >= 1 && $avg <= 4)
-        {
+        } else if ($avg >= 1 && $avg <= 4) {
             return 80;
-        }
-        else if($avg >= 1 && $avg <= 5)
-        {
+        } else if ($avg >= 1 && $avg <= 5) {
             return 100;
-        } else{
+        } else {
             return 0;
         }
     }
