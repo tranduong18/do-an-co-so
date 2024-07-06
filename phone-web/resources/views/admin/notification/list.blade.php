@@ -23,22 +23,22 @@
                 <div class="col-md-12">
                     @include('admin.layouts._message')
 
-                  
+
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Notification</h3>
                         </div>
                         <div class="card-body p-0">
                             <table class="table table-striped">
-                              
+
                                 <tbody>
                                     @foreach($getRecord as $value)
                                     <tr>
                                         <td>
-                                    <a style="color: #000; {{!empty($value->is_read) ? 'font-weight:bold' : ''}}" href="{{$value->url}}?noti_id={{$value->id}}" >
-                                        {{$value->message}}
-                                      </a>
-                                      </td>
+                                            <a style="color: #000; {{empty($value->is_read) ? 'font-weight:bold' : ''}}" href="{{$value->url}}?noti_id={{$value->id}}">
+                                                {{$value->message}}
+                                            </a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

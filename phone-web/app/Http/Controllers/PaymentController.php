@@ -227,8 +227,8 @@ class PaymentController extends Controller
 
                     // Mail::to($getOrder->email)->send(new OrderInvoiceMail($getOrder));
                     $user_id= 1;
-                    $url = url('admin/orders/detail/' .$getOrder->id);
-                    $message = "New Order Placed #" .$getOrder->order_number;
+                    $url = url('admin/order/detail/' .$getOrder->id);
+                    $message = "New Order Placed #" .$getOrder->id;
                     NotificationModel::insertRecord($user_id, $url,  $message);
 
                     Cart::clear();

@@ -31,9 +31,9 @@
                             <div class="form-group">
                                 <label>ID : <span style="font-weight: normal;">{{$getRecord->id}}</span></label>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Order Number : <span style="font-weight: normal;">{{$getRecord->order_number}}</span></label>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label>Name : <span style="font-weight: normal;">{{$getRecord->last_name}} {{$getRecord->first_name}}</span></label>
                             </div>
