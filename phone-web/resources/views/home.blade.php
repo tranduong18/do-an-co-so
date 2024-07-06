@@ -222,49 +222,6 @@
 
     </div><!-- End .container -->
 
-    <div class="container">
-        <hr>
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-sm-6">
-                <div class="icon-box icon-box-card text-center">
-                    <span class="icon-box-icon">
-                        <i class="icon-rocket"></i>
-                    </span>
-                    <div class="icon-box-content">
-                        <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
-                        <p>Free shipping for orders over $50</p>
-                    </div><!-- End .icon-box-content -->
-                </div><!-- End .icon-box -->
-            </div><!-- End .col-lg-4 col-sm-6 -->
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="icon-box icon-box-card text-center">
-                    <span class="icon-box-icon">
-                        <i class="icon-rotate-left"></i>
-                    </span>
-                    <div class="icon-box-content">
-                        <h3 class="icon-box-title">Return & Refund</h3><!-- End .icon-box-title -->
-                        <p>Free 100% money back guarantee</p>
-                    </div><!-- End .icon-box-content -->
-                </div><!-- End .icon-box -->
-            </div><!-- End .col-lg-4 col-sm-6 -->
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="icon-box icon-box-card text-center">
-                    <span class="icon-box-icon">
-                        <i class="icon-life-ring"></i>
-                    </span>
-                    <div class="icon-box-content">
-                        <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
-                        <p>Alway online feedback 24/7</p>
-                    </div><!-- End .icon-box-content -->
-                </div><!-- End .icon-box -->
-            </div><!-- End .col-lg-4 col-sm-6 -->
-        </div><!-- End .row -->
-
-        <div class="mb-2"></div><!-- End .mb-2 -->
-    </div><!-- End .container -->
-
     @if(!empty($getBlog->count()))
     <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
         <div class="container">
@@ -275,7 +232,7 @@
                     <div class="icon-box icon-box-card text-center">
                         @if(!empty($getHomeSetting->getPaymentImage()))
                         <span class="icon-box-icon">
-                            <img style="width: 50px;" src="{{ $getHomeSetting->getPaymentImage() }}">
+                            <img style="width: 100px;" src="{{ $getHomeSetting->getPaymentImage() }}">
                         </span>
                         @endif
                         <div class="icon-box-content">
@@ -291,7 +248,7 @@
                     <div class="icon-box icon-box-card text-center">
                     @if(!empty($getHomeSetting->getRefundImage()))
                         <span class="icon-box-icon">
-                            <img style="width: 50px;" src="{{ $getHomeSetting->getRefundImage() }}">
+                            <img style="width: 100px;" src="{{ $getHomeSetting->getRefundImage() }}">
                         </span>
                         @endif
                         <div class="icon-box-content">
@@ -307,7 +264,7 @@
                     <div class="icon-box icon-box-card text-center">
                         @if(!empty($getHomeSetting->getSupportImage()))
                         <span class="icon-box-icon">
-                            <img style="width: 50px;" src="{{ $getHomeSetting->getSupportImage() }}">
+                            <img style="width: 100px;" src="{{ $getHomeSetting->getSupportImage() }}">
                         </span>
                         @endif
                         <div class="icon-box-content">
@@ -379,7 +336,7 @@
         @endif
         
         
-            @if(!empty($getHomeSetting->singup_title))
+            @if(!empty($getHomeSetting->singup_title) && empty(Auth::check()))
             <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url('{{ $getHomeSetting->getSingupImage() }}');">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -391,9 +348,7 @@
                                 </div><!-- End .col -->
 
                                 <div class="col-auto">
-                                    @if(empty(Auth::check()))
                                     <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white"><span>SIGN UP</span><i class="icon-long-arrow-right"></i></a>
-                                    @endif
                                 </div><!-- End .col-auto -->
                             </div><!-- End .row no-gutters -->
                         </div><!-- End .col-md-10 col-lg-9 -->
