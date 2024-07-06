@@ -61,6 +61,11 @@
                                         <label style="display: block;">Home Screen <span style="color: red;">*</span></label>
                                         <input type="checkbox"  name="is_home" >
                                     </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block;">Menu<span style="color: red;">*</span></label>
+                                        <input type="checkbox"  name="is_menu" >
+                                    </div>
                                     <hr>
 
                                     <div class="form-group">

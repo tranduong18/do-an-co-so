@@ -14,6 +14,7 @@ use App\Mail\ContactUsMail;
 use App\Models\BlogCategoryModel;
 use App\Models\BlogCommentModel;
 use App\Models\BlogModel;
+use App\Models\HomeSettingModel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Mail;
@@ -23,6 +24,7 @@ class HomeController extends Controller
 {
     public function home()
     {
+        $data['getHomeSetting'] = HomeSettingModel::getSingle();
         $data['getBlog'] = BlogModel::getRecordActiveHome();
         $data['getSlider'] = SliderModel::getRecordActive();
         $data['getPartner'] = PartnerModel::getRecordActive();

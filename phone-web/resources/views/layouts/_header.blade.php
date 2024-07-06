@@ -52,7 +52,7 @@
 
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
-                                <li class="active">
+                                <li class="{{ (Request::segment(1) == '') ? 'active' : '' }}">
                                     <a href="{{url('')}}" >Home</a>
                                 </li>
                                 <li>
@@ -84,6 +84,14 @@
                                         </div>
                                     </div>
                                 </li>
+                                @php
+                                    $getCategoryHeaderMenu = App\Models\CategoryModel::getRecordMenuHeader();
+                                @endphp
+                                @foreach($getCategoryHeaderMenu as $menu)
+                                    <li class="{{ (Request::segment(1) == $menu->slug) ? 'active' : '' }}">
+                                        <a href="{{url($menu->slug)}}">{{$menu->name}}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </nav>
                     </div>

@@ -8,6 +8,7 @@ use App\Models\PageModel;
 use App\Models\ContactUsModel;
 
 use App\Models\SystemSettingModel;
+use App\Models\HomeSettingModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -69,6 +70,7 @@ class PageController extends Controller
         return view('admin.setting.system_setting', $data);
     }
 
+
     public function update_system_setting(Request $request)
     {
         $save = SystemSettingModel::getSingle();
@@ -109,5 +111,76 @@ class PageController extends Controller
         $save->save();
 
         return redirect()->back()->with('success', "Setting successfully updated");
+    }
+    
+    public function home_setting()
+    {
+        $data['getRecord'] = HomeSettingModel::getSingle();
+        $data['header_title'] = 'Home Setting';
+        return view('admin.setting.home_setting', $data);
+    }
+
+    public function update_home_setting(Request $request)
+    {
+        $save = HomeSettingModel::getSingle();
+        $save->trendy_product_title = trim($request->trendy_product_title);
+        $save->shop_category_title = trim($request->shop_category_title);
+        $save->recent_arrival_title = trim($request->recent_arrival_title);
+        $save->blog_title = trim($request->blog_title);
+        $save->payment_delivery_title = trim($request->payment_delivery_title);
+        $save->payment_delivery_description = trim($request->payment_delivery_description);
+        $save->payment_delivery_image = trim($request->payment_delivery_image);
+        $save->refund_title = trim($request->refund_title);
+        $save->refund_description = trim($request->refund_description);
+        $save->refund_image = trim($request->refund_image);
+        $save->support_title = trim($request->support_title);
+        $save->support_description = trim($request->support_description);
+        $save->support_image = trim($request->support_image);
+        $save->singup_title = trim($request->singup_title);
+        $save->singup_description = trim($request->singup_description);
+        $save->singup_image = trim($request->singup_image);
+
+        if (!empty($request->file('payment_delivery_image'))) {
+            // unlink('upload/setting/'.$save->payment_delivery_image);
+            $file = $request->file('payment_delivery_image');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/setting/', $filename);
+            $save->payment_delivery_image = trim($filename);
+        }
+
+        if (!empty($request->file('refund_image'))) {
+            // unlink('upload/setting/'.$save->refund_image);
+            $file = $request->file('refund_image');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/setting/', $filename);
+            $save->refund_image = trim($filename);
+        }
+
+        if (!empty($request->file('support_image'))) {
+            // unlink('upload/setting/'.$save->support_image);
+            $file = $request->file('support_image');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/setting/', $filename);
+            $save->support_image = trim($filename);
+        }
+
+        if (!empty($request->file('singup_image'))) {
+            // unlink('upload/setting/'.$save->singup_image);
+            $file = $request->file('singup_image');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/setting/', $filename);
+            $save->singup_image = trim($filename);
+        }
+        $save->save();
+
+        return redirect()->back()->with('success', "Home Setting successfully updated");
     }
 }

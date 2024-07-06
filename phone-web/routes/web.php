@@ -166,7 +166,9 @@ Route::group(['middleware' => 'admin'], function(){
 
     Route::get('admin/system-setting', [PageController::class, 'system_setting']);
     Route::post('admin/system-setting', [PageController::class, 'update_system_setting']);
-    
+
+    Route::get('admin/home-setting', [PageController::class, 'home_setting']);
+    Route::post('admin/home-setting', [PageController::class, 'update_home_setting']);
 });
 
 //Page

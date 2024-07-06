@@ -37,6 +37,7 @@ class CategoryController extends Controller
         $category->created_by = Auth::user()->id;
         $category->button_name = trim($request->button_name);
         $category->is_home = !empty($request->is_home) ? 1 : 0;
+        $category->is_menu = !empty($request->is_menu) ? 1 : 0;
         if(!empty($request->file('image_name'))){
             // unlink('upload/category/'.$category->image_name);
             $file= $request->file('image_name');
@@ -71,6 +72,7 @@ class CategoryController extends Controller
         $category->meta_keywords = trim($request->meta_keywords);
         $category->button_name = trim($request->button_name);
         $category->is_home = !empty($request->is_home) ? 1 : 0;
+        $category->is_menu = !empty($request->is_menu) ? 1 : 0;
         if(!empty($request->file('image_name'))){
             $file= $request->file('image_name');
             $ext = $file->getClientOriginalExtension();
