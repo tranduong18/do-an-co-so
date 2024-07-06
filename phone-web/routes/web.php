@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\NotificationController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController as ProductFront;
@@ -169,6 +170,8 @@ Route::group(['middleware' => 'admin'], function(){
 
     Route::get('admin/home-setting', [PageController::class, 'home_setting']);
     Route::post('admin/home-setting', [PageController::class, 'update_home_setting']);
+
+    Route::get('admin/notification ', [PageController::class, 'notification']);
 });
 
 //Page
@@ -212,6 +215,7 @@ Route::post('reset/{token}', [AuthController::class, 'auth_reset']);
 Route::get('search', [ProductFront::class, 'getProductSearch']);
 Route::post('/get_filter_product_ajax', [ProductFront::class, 'getFilterProductAjax']);
 Route::get('{category?}/{subcategory?} ', [ProductFront::class, 'getCategory']);
+
 
 
 

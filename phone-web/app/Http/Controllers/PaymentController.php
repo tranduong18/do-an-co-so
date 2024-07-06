@@ -9,6 +9,7 @@ use App\Models\ShippingChargeModel;
 use App\Models\OrderModel;
 use App\Models\OrderItemModel;
 use App\Models\ColorModel;
+use App\Models\NotificationModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
@@ -223,6 +224,13 @@ class PaymentController extends Controller
                 if($getOrder->payment_method == 'cash'){
                     $getOrder->is_payment = 1;
                     $getOrder->save();
+
+                    // Mail::to($getOrder->email)->send(new OrderInvoiceMail($getOrder));
+                    $user_id= 1;
+                    $url = url('admin/orders/detail/' .$getOrder->id);
+                    $message = "New Order Placed #" .$getOrder->order_number;
+                    NotificationModel::insertRecord($user_id, $url,  $message);
+
                     Cart::clear();
                     return redirect('cart')->with('success', "Order successfully placed");
                 }

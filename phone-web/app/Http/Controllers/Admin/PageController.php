@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PageModel;
 use App\Models\ContactUsModel;
-
+use App\Models\NotificationModel;
 use App\Models\SystemSettingModel;
 use App\Models\HomeSettingModel;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +14,13 @@ use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
+    public function notification()
+    {
+        $data['getRecord'] = NotificationModel::getRecord();
+        $data['header_title'] = 'Notifications';
+        return view('admin.notification.list', $data);
+    
+    }
     public function contactus()
     {
         $data['getRecord'] = ContactUsModel::getRecord();
