@@ -148,12 +148,12 @@
                             </div>
                         </div>
 
-                        @endforeach
+                    @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        @endif
+    @endif
         <!-- @if(!empty($getCategory->count()))
         <div class="container categories pt-6">
             <h2 class="title-lg text-center mb-4">{{ !empty($getHomeSetting->shop_category_title) ? $getHomeSetting->shop_category_title : 'Shop by Categories'}}</h2>
@@ -185,13 +185,8 @@
 
 
         <div class="container">
-<<<<<<< HEAD
                 <div class="heading heading-center mb-6">
                     <h2 class="title">{{ !empty($getHomeSetting->recent_arrival_title) ? $getHomeSetting->recent_arrival_title : 'Recent Arrivals'}}</h2><!-- End .title -->
-=======
-            <div class="heading heading-center mb-6">
-                <h2 class="title">Recent Arrivals</h2><!-- End .title -->
->>>>>>> 94c01e684c1cb90780a2379bad3804cd2d63c708
 
                 <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
 
@@ -406,6 +401,7 @@
                 </div><!-- End .container -->
             </div><!-- End .cta -->
             @endif
+    @endif
         
 </main>
 @endsection
