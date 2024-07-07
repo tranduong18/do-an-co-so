@@ -7,6 +7,7 @@ use App\Models\OrderModel;
 use App\Models\User;
 use App\Models\Product_WishlistModel;
 use App\Models\ProductReviewModel;
+use App\Models\NotificationModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -33,8 +34,12 @@ class UserController extends Controller
         return view('user.dashboard', $data);
     }
 
-    public function orders()
+    public function orders(Request $request)
     {
+        if(!empty($request->noti_id))
+        {
+            NotificationModel::updateReadNoti($request->noti_id);
+        }
         $data['getOrders'] = OrderModel::getRecordUser(Auth::user()->id);
         $data['meta_title'] = 'Orders';
         $data['meta_description'] = '';
@@ -75,6 +80,16 @@ class UserController extends Controller
         $data['getRecord'] = User::getSingle(Auth::user()->id);
         return view('user.edit_profile', $data);
     }
+
+    public function notifications(Request $request)
+    {
+        $data['meta_title'] = 'Notifications';
+        $data['meta_description'] = '';
+        $data['meta_keywords'] = '';
+        $data['getRecord'] = NotificationModel::getRecordUser(Auth::user()->id);
+        return view('user.notification', $data);
+    }
+
     public function change_password()
     {
         $data['meta_title'] = 'Change Password';

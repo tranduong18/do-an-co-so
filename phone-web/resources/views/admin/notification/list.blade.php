@@ -38,6 +38,11 @@
                                             <a style="color: #000; {{empty($value->is_read) ? 'font-weight:bold' : ''}}" href="{{$value->url}}?noti_id={{$value->id}}">
                                                 {{$value->message}}
                                             </a>
+                                            <div>
+                                                <small>
+                                                    {{ date('d-m-Y h:i A', strtotime($value->created_at))}}
+                                                </small>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
