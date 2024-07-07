@@ -56,7 +56,6 @@ Route::group(['middleware' => 'user'], function(){
     Route::post('add_to_wishlist', [UserController::class, 'add_to_wishlist']);
     
     Route::post('user/make-review', [UserController::class, 'submit_review']);
-    Route::get('user/notifications', [UserController::class, 'notifications']);
 
     Route::post('blog/submit_comment', [HomeController::class, 'submit_blog_comment']);
 });
