@@ -148,12 +148,12 @@
                             </div>
                         </div>
 
-                    @endforeach
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    @endif
+        @endif
         <!-- @if(!empty($getCategory->count()))
         <div class="container categories pt-6">
             <h2 class="title-lg text-center mb-4">{{ !empty($getHomeSetting->shop_category_title) ? $getHomeSetting->shop_category_title : 'Shop by Categories'}}</h2>
@@ -185,8 +185,8 @@
 
 
         <div class="container">
-                <div class="heading heading-center mb-6">
-                    <h2 class="title">{{ !empty($getHomeSetting->recent_arrival_title) ? $getHomeSetting->recent_arrival_title : 'Recent Arrivals'}}</h2><!-- End .title -->
+            <div class="heading heading-center mb-6">
+                <h2 class="title">{{ !empty($getHomeSetting->recent_arrival_title) ? $getHomeSetting->recent_arrival_title : 'Recent Arrivals'}}</h2><!-- End .title -->
 
                 <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
 
@@ -205,7 +205,7 @@
                 <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
                     <div class="products">
                         @php
-                            $is_home=1;
+                        $is_home=1;
                         @endphp
                         @include('product._list')
                     </div>
@@ -246,7 +246,7 @@
                 @if(!empty($getHomeSetting->refund_title))
                 <div class="col-lg-4 col-sm-6">
                     <div class="icon-box icon-box-card text-center">
-                    @if(!empty($getHomeSetting->getRefundImage()))
+                        @if(!empty($getHomeSetting->getRefundImage()))
                         <span class="icon-box-icon">
                             <img style="width: 100px;" src="{{ $getHomeSetting->getRefundImage() }}">
                         </span>
@@ -258,7 +258,7 @@
                     </div><!-- End .icon-box -->
                 </div><!-- End .col-lg-4 col-sm-6 -->
                 @endif
-                
+
                 @if(!empty($getHomeSetting->support_title))
                 <div class="col-lg-4 col-sm-6">
                     <div class="icon-box icon-box-card text-center">
@@ -273,7 +273,7 @@
                         </div><!-- End .icon-box-content -->
                     </div><!-- End .icon-box -->
                 </div><!-- End .col-lg-4 col-sm-6 -->
-                @endif              
+                @endif
             </div><!-- End .row -->
 
             <div class="mb-2"></div><!-- End .mb-2 -->
@@ -302,85 +302,83 @@
                                 }
                             }
                         }'>
-                @foreach($getBlog as $blog)
-                <article class="entry entry-display">
-                    <figure class="entry-media">
-                        <a href="{{url('blog/'.$blog->slug)}}">
-                            <img style="height: 260px" src="{{$blog->getImage()}}" alt="{{$blog->title}}">
-                        </a>
-                    </figure><!-- End .entry-media -->
+                    @foreach($getBlog as $blog)
+                    <article class="entry entry-display">
+                        <figure class="entry-media">
+                            <a href="{{url('blog/'.$blog->slug)}}">
+                                <img style="height: 260px" src="{{$blog->getImage()}}" alt="{{$blog->title}}">
+                            </a>
+                        </figure><!-- End .entry-media -->
 
-                    <div class="entry-body pb-4 text-center">
-                        <div class="entry-meta">
-                            <a href="#">{{ date('M d, Y', strtotime($blog->created_at)) }}</a>, {{$blog->getCommentCount()}} Comments
-                        </div><!-- End .entry-meta -->
+                        <div class="entry-body pb-4 text-center">
+                            <div class="entry-meta">
+                                <a href="#">{{ date('M d, Y', strtotime($blog->created_at)) }}</a>, {{$blog->getCommentCount()}} Comments
+                            </div><!-- End .entry-meta -->
 
-                        <h3 class="entry-title">
-                            <a href="{{url('blog/'.$blog->slug)}}">{{$blog->title}}</a>
-                        </h3><!-- End .entry-title -->
+                            <h3 class="entry-title">
+                                <a href="{{url('blog/'.$blog->slug)}}">{{$blog->title}}</a>
+                            </h3><!-- End .entry-title -->
 
-                        <div class="entry-content">
-                            <p>{{ $blog->short_description }}</p>
-                            <a href="{{url('blog/'.$blog->slug)}}" class="read-more">Read More</a>
-                        </div><!-- End .entry-content -->
-                    </div><!-- End .entry-body -->
-                </article>
-                @endforeach
-            </div><!-- End .owl-carousel -->
-        </div><!-- container -->
+                            <div class="entry-content">
+                                <p>{{ $blog->short_description }}</p>
+                                <a href="{{url('blog/'.$blog->slug)}}" class="read-more">Read More</a>
+                            </div><!-- End .entry-content -->
+                        </div><!-- End .entry-body -->
+                    </article>
+                    @endforeach
+                </div><!-- End .owl-carousel -->
+            </div><!-- container -->
 
             <div class="more-container text-center mb-0 mt-3">
                 <a href="{{url('blog')}}" class="btn btn-outline-darker btn-more"><span>View more articles</span><i class="icon-long-arrow-right"></i></a>
             </div><!-- End .more-container -->
         </div>
         @endif
-        
-        
-            @if(!empty($getHomeSetting->singup_title) && empty(Auth::check()))
-            <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url('{{ $getHomeSetting->getSingupImage() }}');">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10 col-lg-9 col-xl-8">
-                            <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
-                                <div class="col">
-                                    <h3 class="cta-title text-white">{{$getHomeSetting->singup_title}}</h3><!-- End .cta-title -->
-                                    <p class="cta-desc text-white">{{$getHomeSetting->singup_description}}</p><!-- End .cta-desc -->
-                                </div><!-- End .col -->
 
-                                <div class="col-auto">
-                                    <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white"><span>SIGN UP</span><i class="icon-long-arrow-right"></i></a>
-                                </div><!-- End .col-auto -->
-                            </div><!-- End .row no-gutters -->
-                        </div><!-- End .col-md-10 col-lg-9 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-            </div><!-- End .cta -->
-            @endif
-    @endif
-        
+
+        @if(!empty($getHomeSetting->singup_title) && empty(Auth::check()))
+        <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url('{{ $getHomeSetting->getSingupImage() }}');">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-9 col-xl-8">
+                        <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
+                            <div class="col">
+                                <h3 class="cta-title text-white">{{$getHomeSetting->singup_title}}</h3><!-- End .cta-title -->
+                                <p class="cta-desc text-white">{{$getHomeSetting->singup_description}}</p><!-- End .cta-desc -->
+                            </div><!-- End .col -->
+
+                            <div class="col-auto">
+                                <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white"><span>SIGN UP</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .col-auto -->
+                        </div><!-- End .row no-gutters -->
+                    </div><!-- End .col-md-10 col-lg-9 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </div><!-- End .cta -->
+        @endif
+        @endif
 </main>
 @endsection
 
 @section('script')
 <script type="text/javascript">
-        $('body').delegate('.getCategoryProduct', 'click',function(){
-   
-            var category_id =$(this).attr('data-val');
-            console.log(category_id);
+    $('body').delegate('.getCategoryProduct', 'click', function() {
 
-            $.ajax({
-                url: "{{url('recent_arrival_category_product') }}",
-                type:"POST",
-                data:{
-                    "_token": "{{csrf_token()}}",
-                    category_id:category_id,
-                },
-                dataType:"json",
-                success:function(reponse){
-                    $('.getCategoryProduct' +category_id).html(response.success)
-                },
-                
-            });
+        var category_id = $(this).attr('data-val');
+        console.log(category_id);
+
+        $.ajax({
+            url: "{{url('recent_arrival_category_product') }}",
+            type: "POST",
+            data: {
+                "_token": "{{csrf_token()}}",
+                category_id: category_id,
+            },
+            dataType: "json",
+            success: function(reponse) {
+                $('.getCategoryProduct' + category_id).html(response.success)
+            },
         });
+    });
 </script>
 @endsection
