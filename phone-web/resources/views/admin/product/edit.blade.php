@@ -119,14 +119,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Price ($)<span style="color: red;">*</span></label>
+                                            <label>Price (VND)<span style="color: red;">*</span></label>
                                             <input type="text" class="form-control" name="price" required value="{{!empty($product->price) ? $product->price : ''}}" placeholder="Price">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Old Price ($)<span style="color: red;">*</span></label>
+                                            <label>Old Price (VND)<span style="color: red;">*</span></label>
                                             <input type="text" class="form-control" name="old_price" required value="{{!empty($product->old_price) ? $product->old_price : ''}}" placeholder="Old Price">
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Name</th>
-                                                            <th>Price ($)</th>
+                                                            <th>Price (VND)</th>
                                                             <th>Action</th>
 
                                                         </tr>

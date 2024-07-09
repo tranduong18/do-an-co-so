@@ -26,7 +26,7 @@
                                     <tr>
                                         <th>#</th>
 
-                                        <th>Total Amount ($)</th>
+                                        <th>Total Amount (VND)</th>
                                         <th>Status</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -40,15 +40,15 @@
                                             <td>{{number_format($value->total_amount, 2)}}</td>
                                             <td>
                                                 @if($value -> status ==0)
-                                                    Pending
+                                                Đang xử lý
                                                 @elseif($value -> status ==1)
-                                                    In Progress
+                                                Chờ lấy hàng
                                                 @elseif($value -> status ==2)
-                                                    Delivered
+                                                Đang giao hàng
                                                 @elseif($value -> status ==3)
-                                                    Completed
+                                                Giao thành công
                                                 @elseif($value -> status ==4)
-                                                Canceled
+                                                Hoãn
                                                 @endif
                                             </td>
                                             <td>{{ date('d-m-Y', strtotime($value->created_at))}}</td>

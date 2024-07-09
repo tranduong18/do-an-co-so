@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="product-price">
-                                $<span id="getTotalPrice">{{number_format($getProduct->price, 2)}}</span>
+                                <span id="getTotalPrice">{{number_format($getProduct->price, 2)}}</span> VND
                             </div>
 
                             <div class="product-content">
@@ -263,13 +263,13 @@
                         </div>
                         <h3 class="product-title"><a href="{{url($value->title)}}">{{$value->title}}</a></h3>
                         <div class="product-price">
-                            ${{number_format($value->price, 2)}}
+                            {{number_format($value->price, 2)}} VND
                         </div>
                         <div class="ratings-container">
                             <div class="ratings">
                                 <div class="ratings-val" style="width: 20%;"></div>
                             </div>
-                            <span class="ratings-text">( 2 Reviews )</span>
+                            <span class="ratings-text">( {{ $value->getTotalReview()}} Reviews )</span>
                         </div>
                     </div>
                 </div>

@@ -208,7 +208,7 @@ class PaymentController extends Controller
             }
             $json['status'] = true;
             $json['message'] = "Success";
-            $json['redirect'] = url('checkout/payment?order_id='.base64_encode($order->id));
+            $json['redirect'] = url('checkout/payment?order_id=' . base64_encode($order->id));
         } else {
             $json['status'] = false;
             $json['message'] = $message;
@@ -216,30 +216,104 @@ class PaymentController extends Controller
         echo json_encode($json);
     }
 
-    public function checkout_payment(Request $request){
-        if(!empty(Cart::getSubTotal()) && !empty($request->order_id)){
+    public function vnpayReturn(Request $request)
+    {
+        $vnp_ResponseCode = $request->get('vnp_ResponseCode');
+        $vnp_TxnRef = $request->get('vnp_TxnRef');
+
+        // Tìm order bằng mã đơn hàng đã gửi
+        $getOrder = OrderModel::where('id', $vnp_TxnRef)->first();
+
+        if ($vnp_ResponseCode == '00' && !empty($getOrder)) {
+            $getOrder->is_payment = 1;
+            $getOrder->save();
+
+            // Mail::to($getOrder->email)->send(new OrderInvoiceMail($getOrder));
+            $user_id = 1;
+            $url = url('admin/order/detail/' . $getOrder->id);
+            $message = "New Order Placed #" . $getOrder->id;
+            NotificationModel::insertRecord($user_id, $url, $message);
+
+            Cart::clear();
+            return redirect('cart')->with('success', "Order successfully placed");
+        } else {
+            return redirect('cart')->with('error', "Payment failed or order not found");
+        }
+    }
+
+
+    public function checkout_payment(Request $request)
+    {
+        if (!empty(Cart::getSubTotal()) && !empty($request->order_id)) {
             $order_id = base64_decode($request->order_id);
             $getOrder = OrderModel::getSingle($order_id);
-            if(!empty($getOrder)){
-                if($getOrder->payment_method == 'cash'){
+            if (!empty($getOrder)) {
+                if ($getOrder->payment_method == 'cash') {
                     $getOrder->is_payment = 1;
                     $getOrder->save();
 
                     // Mail::to($getOrder->email)->send(new OrderInvoiceMail($getOrder));
-                    $user_id= 1;
-                    $url = url('admin/order/detail/' .$getOrder->id);
-                    $message = "New Order Placed #" .$getOrder->id;
+                    $user_id = 1;
+                    $url = url('admin/order/detail/' . $getOrder->id);
+                    $message = "New Order Placed #" . $getOrder->id;
                     NotificationModel::insertRecord($user_id, $url,  $message);
 
                     Cart::clear();
                     return redirect('cart')->with('success', "Order successfully placed");
+                } else if ($getOrder->payment_method == 'vnpay') {
+                    $vnp_TmnCode = "GHHNT2HB"; // Mã website tại VNPAY 
+                    $vnp_HashSecret = "BAGAOHAPRHKQZASKQZASVPRSAKPXNYXS"; // Chuỗi bí mật
+
+                    $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+                    $vnp_Returnurl = "http://127.0.0.1:8000/vnpay_return"; // Đổi URL này thành URL thực tế của bạn
+                    $vnp_TxnRef = $getOrder->id; // Mã đơn hàng là ID của đơn hàng
+                    $vnp_OrderInfo = "Thanh toán hóa đơn phí dịch vụ";
+                    $vnp_OrderType = 'billpayment';
+                    $vnp_Amount = $getOrder->total_amount * 100; // Số tiền thanh toán (đơn vị: VND)
+                    $vnp_Locale = 'vn';
+                    $vnp_IpAddr = request()->ip();
+
+                    $inputData = array(
+                        "vnp_Version" => "2.0.0",
+                        "vnp_TmnCode" => $vnp_TmnCode,
+                        "vnp_Amount" => $vnp_Amount,
+                        "vnp_Command" => "pay",
+                        "vnp_CreateDate" => date('YmdHis'),
+                        "vnp_CurrCode" => "VND",
+                        "vnp_IpAddr" => $vnp_IpAddr,
+                        "vnp_Locale" => $vnp_Locale,
+                        "vnp_OrderInfo" => $vnp_OrderInfo,
+                        "vnp_OrderType" => $vnp_OrderType,
+                        "vnp_ReturnUrl" => $vnp_Returnurl,
+                        "vnp_TxnRef" => $vnp_TxnRef,
+                    );
+
+                    ksort($inputData);
+                    $query = "";
+                    $i = 0;
+                    $hashdata = "";
+                    foreach ($inputData as $key => $value) {
+                        if ($i == 1) {
+                            $hashdata .= '&' . $key . "=" . $value;
+                        } else {
+                            $hashdata .= $key . "=" . $value;
+                            $i = 1;
+                        }
+                        $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                    }
+
+                    $vnp_Url = $vnp_Url . "?" . $query;
+                    if (isset($vnp_HashSecret)) {
+                        $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+                        $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+                    }
+
+                    return redirect($vnp_Url);
                 }
-            }
-            else{
+            } else {
                 abort(404);
             }
-        }
-        else{
+        } else {
             abort(404);
         }
     }

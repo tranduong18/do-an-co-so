@@ -53,16 +53,19 @@
                                 <label>Discount Code : <span style="font-weight: normal;">{{$getRecord->discount_code}}</span></label>
                             </div>
                             <div class="form-group">
-                                <label>Discount Amount ($) : <span style="font-weight: normal;">{{number_format($getRecord->discount_amount, 2)}}</span></label>
+                                <label>Discount Amount (VND) : <span style="font-weight: normal;">{{number_format($getRecord->discount_amount, 2)}}</span></label>
                             </div>
                             <div class="form-group">
                                 <label>Shipping Name : <span style="font-weight: normal;">{{$getRecord->getShipping->name}}</span></label>
                             </div>
                             <div class="form-group">
-                                <label>Shipping Amount ($) : <span style="font-weight: normal;">{{number_format($getRecord->shipping_amount, 2)}}</span></label>
+                                <label>Shipping Amount (VND) : <span style="font-weight: normal;">{{number_format($getRecord->shipping_amount, 2)}}</span></label>
                             </div>
                             <div class="form-group">
-                                <label>Total Amount ($) : <span style="font-weight: normal;">{{number_format($getRecord->total_amount, 2)}}</span></label>
+                                <label>Total Amount (VND) : <span style="font-weight: normal;">{{number_format($getRecord->total_amount, 2)}}</span></label>
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Method : <span style="font-weight: normal;">{{$getRecord->payment_method}}</span></label>
                             </div>
                             <div class="form-group">
                                 <label>Status : <span style="font-weight: normal;">{{($getRecord->status == 0) ? 'Active' : 'Inactive' }}</span></label>
@@ -92,8 +95,8 @@
                                         <th>Price</th>
                                         <th>Color Name</th>
                                         <th>Size Name</th>
-                                        <th>Size Amount ($)</th>
-                                        <th>Total Amount ($)</th>
+                                        <th>Size Amount (VND)</th>
+                                        <th>Total Amount (VND)</th>
                                     </tr>
                                 </thead>
                                 <tbody>

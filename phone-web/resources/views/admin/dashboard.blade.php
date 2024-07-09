@@ -146,9 +146,10 @@
                     <th>Postcode</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Discount Amount ($)</th>
-                    <th>Shipping Amount ($)</th>
-                    <th>Total Amount ($)</th>
+                    <th>Discount Amount (VND)</th>
+                    <th>Shipping Amount (VND)</th>
+                    <th>Total Amount (VND)</th>
+                    <th>Payment Method</th>
                     <th>Created Date</th>
                     <th>Action</th>
 
@@ -166,6 +167,7 @@
                     <td>{{number_format($value->discount_amount, 2)}}</td>
                     <td>{{number_format($value->shipping_amount, 2)}}</td>
                     <td>{{number_format($value->total_amount, 2)}}</td>
+                    <td>{{$value->payment_method}}</td>
                     <td>{{ date('d-m-Y', strtotime($value->created_at))}}</td>
                     <td>
                       <a href="{{url('admin/order/detail/'.$value->id)}}" class="btn btn-primary">Detail </a>

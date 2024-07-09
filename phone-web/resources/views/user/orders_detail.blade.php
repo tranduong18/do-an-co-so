@@ -43,14 +43,14 @@
                                         <label>Discount Code : <span style="font-weight: normal;">{{$getRecord->discount_code}}</span></label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Discount Amount ($) : <span style="font-weight: normal;">{{number_format($getRecord->discount_amount, 2)}}</span></label>
+                                        <label>Discount Amount (VND) : <span style="font-weight: normal;">{{number_format($getRecord->discount_amount, 2)}}</span></label>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Shipping Amount ($) : <span style="font-weight: normal;">{{number_format($getRecord->shipping_amount, 2)}}</span></label>
+                                        <label>Shipping Amount (VND) : <span style="font-weight: normal;">{{number_format($getRecord->shipping_amount, 2)}}</span></label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Total Amount ($) : <span style="font-weight: normal;">{{number_format($getRecord->total_amount, 2)}}</span></label>
+                                        <label>Total Amount (VND) : <span style="font-weight: normal;">{{number_format($getRecord->total_amount, 2)}}</span></label>
                                     </div>
                                     <div class="form-group">
                                         <label>Status : @if($getRecord -> status ==0)
@@ -87,8 +87,8 @@
                                             <th>Product Name</th>
                                             <th>QTY</th>
                                             <th>Price</th>
-                                            <th>Size Amount ($)</th>
-                                            <th>Total Amount ($)</th>
+                                            <th>Size Amount (VND)</th>
+                                            <th>Total Amount (VND)</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -154,8 +154,8 @@
       </div>
       <form action="{{ url('user/make-review') }}" method="post">
         {{csrf_field()}}
-        <input type="text" name="product_id" required id="getProductId">
-        <input type="text" name="order_id" required id="getOrderId">
+        <input type="hidden" name="product_id" required id="getProductId">
+        <input type="hidden" name="order_id" required id="getOrderId">
       <div class="modal-body" style="padding: 20px;">
         <div class="form-group" style="margin-bottom: 15px;">
             <label>How many rating? *</label>

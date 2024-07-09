@@ -98,9 +98,10 @@
                                         <th>Phone</th>
                                         <th>Email</th>
                                         <th>Discount Code</th>
-                                        <th>Discount Amount ($)</th>
-                                        <th>Shipping Amount ($)</th>
-                                        <th>Total Amount ($)</th>
+                                        <th>Discount Amount (VND)</th>
+                                        <th>Shipping Amount (VND)</th>
+                                        <th>Total Amount (VND)</th>
+                                        <th>Payment Method</th>
                                         <th>Status</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
@@ -120,13 +121,14 @@
                                         <td>{{number_format($value->discount_amount, 2)}}</td>
                                         <td>{{number_format($value->shipping_amount, 2)}}</td>
                                         <td>{{number_format($value->total_amount, 2)}}</td>
+                                        <td>{{$value->payment_method}}</td>
                                         <td>
                                             <select class="form-control ChangeStatus" id="{{$value->id}}" style="width: 150px;">
-                                                <option {{($value->status == 0) ? 'selected' : ''}} value="0">Pending</option>
-                                                <option {{($value->status == 1) ? 'selected' : ''}} value="1">Improgress</option>
-                                                <option {{($value->status == 2) ? 'selected' : ''}} value="2">Delivered</option>
-                                                <option {{($value->status == 3) ? 'selected' : ''}} value="3">Completed</option>
-                                                <option {{($value->status == 4) ? 'selected' : ''}} value="4">Cancelled</option>
+                                                <option {{($value->status == 0) ? 'selected' : ''}} value="0">Đang xử lý</option>
+                                                <option {{($value->status == 1) ? 'selected' : ''}} value="1">Chờ lấy hàng</option>
+                                                <option {{($value->status == 2) ? 'selected' : ''}} value="2">Đang giao hàng</option>
+                                                <option {{($value->status == 3) ? 'selected' : ''}} value="3">Giao thành công</option>
+                                                <option {{($value->status == 4) ? 'selected' : ''}} value="4">Hoãn</option>
                                             </select>
                                         </td>
                                         <td>{{ date('d-m-Y', strtotime($value->created_at))}}</td>
@@ -144,7 +146,6 @@
                 </div>
                 <!-- /.col -->
             </div>
-
         </div>
     </section>
 

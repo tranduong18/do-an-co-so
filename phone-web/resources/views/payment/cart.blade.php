@@ -70,7 +70,7 @@
 
                                         </div><!-- End .cart-product-quantity -->
                                     </td>
-                                    <td class="total-col">${{number_format($cart->price * $cart->quantity,2)}}</td>
+                                    <td class="total-col">{{number_format($cart->price * $cart->quantity,2)}} VND</td>
                                     <td class="remove-col"><a href="{{url('cart/delete/'.$cart->id)}}" class="btn-remove"><i class="icon-close"></i></a></td>
                                 </tr>
                                     @endif
@@ -94,12 +94,12 @@
                                     <tbody>
                                     <tr class="summary-subtotal">
                                         <td>Subtotal:</td>
-                                        <td>${{number_format(Cart::getSubTotal(),2)}}</td>
+                                        <td>{{number_format(Cart::getSubTotal(),2)}} VND</td>
                                     </tr><!-- End .summary-subtotal -->
                                     
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td>${{number_format(Cart::getSubTotal(),2)}}</td>
+                                        <td>{{number_format(Cart::getSubTotal(),2)}} VND</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->

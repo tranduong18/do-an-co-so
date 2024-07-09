@@ -118,7 +118,7 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
                                         @endforeach
                                         <tr class="summary-subtotal">
                                             <td>Subtotal:</td>
-                                            <td>${{number_format(Cart::getSubTotal(),2)}}</td>
+                                            <td>{{number_format(Cart::getSubTotal(),2)}} VND</td>
                                         </tr>
 
                                         <tr>
@@ -153,7 +153,7 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
                                             </td>
                                             <td>
                                                 @if(!empty($shipping->name))
-                                                ${{number_format($shipping->price, 2)}}
+                                                {{number_format($shipping->price, 2)}} VND
                                                 @endif
                                             </td>
                                         </tr>
@@ -163,7 +163,7 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
                                             <td>
                                                 Total:
                                             </td>
-                                            <td>$<span id="getPayableTotal">{{number_format(Cart::getSubTotal(),2)}}</span></td>
+                                            <td><span id="getPayableTotal">{{number_format(Cart::getSubTotal(),2)}}</span> VND</td>
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
@@ -178,12 +178,12 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
                                     <!-- <div class="custom-control custom-radio" style="margin-top: 0px;">
                                         <input type="radio" required id="PayPal" value="paypal" name="payment_method" class="custom-control-input">
                                         <label class="custom-control-label" for="PayPal">PayPal</label>
-                                    </div>
+                                    </div> -->
 
                                     <div class="custom-control custom-radio" style="margin-top: 0px;">
-                                        <input type="radio" required id="CreditCard" value="stripe" name="payment_method" class="custom-control-input">
-                                        <label class="custom-control-label" for="CreditCard">Credit Card (Stripe)</label>
-                                    </div> -->
+                                        <input type="radio" required id="PayPal" value="vnpay" name="payment_method" class="custom-control-input">
+                                        <label class="custom-control-label" for="PayPal">VNPAY</label>
+                                    </div>
 
                                 </div><!-- End .accordion -->
 

@@ -201,6 +201,7 @@ Route::get('checkout', [PaymentController::class, 'checkout']);
 Route::post('checkout/apply_discount_code', [PaymentController::class, 'apply_discount_code']);
 Route::post('checkout/place_order', [PaymentController::class, 'place_order']);
 Route::get('checkout/payment', [PaymentController::class, 'checkout_payment']);
+Route::get('/vnpay_return', [PaymentController::class, 'vnpayReturn']);
 //Login and Signup User
 Route::post('auth_register', [AuthController::class, 'auth_register']);
 Route::post('auth_login', [AuthController::class, 'auth_login']);
