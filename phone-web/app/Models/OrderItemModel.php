@@ -14,6 +14,11 @@ class OrderItemModel extends Model
         return $this->belongsTo(ProductModel::class, 'product_id');
     }
 
+    static public function getSingle($product_id){
+        return self::where('product_id','=', $product_id)
+            ->first();
+    }
+
     static public function getReview($product_id, $order_id){
         return ProductReviewModel::getReview($product_id, $order_id, Auth::user()->id);
     }

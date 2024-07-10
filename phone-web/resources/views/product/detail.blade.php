@@ -98,9 +98,9 @@
                                 @endif
 
                                 <div class="details-filter-row details-row-size">
-                                    <label for="qty">Qty:</label>
+                                    <label for="qty">Quantity:</label>
                                     <div class="product-details-quantity">
-                                        <input type="number" id="qty" class="form-control" value="1" min="1" max="100" name="qty" required step="1" data-decimals="0" required>
+                                        <input type="number" id="qty" class="form-control" value="1" min="1" max="{{$getProduct->quantity}}" name="qty" required step="1" data-decimals="0" required>
                                     </div><!-- End .product-details-quantity -->
                                 </div><!-- End .details-filter-row -->
 

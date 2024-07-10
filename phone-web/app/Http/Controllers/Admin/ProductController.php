@@ -85,6 +85,7 @@ class ProductController extends Controller
 
             $product->price = trim($request->price);
             $product->old_price = trim($request->old_price);
+            $product->quantity = trim($request->quantity);
             $product->short_description = trim($request->short_description);
             $product->description = trim($request->description);
             $product->additional_information = trim($request->additional_information);

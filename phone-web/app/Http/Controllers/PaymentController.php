@@ -228,6 +228,14 @@ class PaymentController extends Controller
             $getOrder->is_payment = 1;
             $getOrder->save();
 
+            foreach (Cart::getContent() as $key => $cart) {
+                $product = ProductModel::getSingle($cart->id);
+                $order_item = OrderItemModel::where('order_id', $getOrder->id)->where('product_id', $product->id)->first();
+                if ($order_item) {
+                    $product->quantity -= $order_item->quantity;
+                    $product->save();
+                }
+            }
             // Mail::to($getOrder->email)->send(new OrderInvoiceMail($getOrder));
             $user_id = 1;
             $url = url('admin/order/detail/' . $getOrder->id);
@@ -237,6 +245,10 @@ class PaymentController extends Controller
             Cart::clear();
             return redirect('cart')->with('success', "Order successfully placed");
         } else {
+            if (!empty($getOrder)) {
+                OrderItemModel::where('order_id', $getOrder->id)->delete();
+                $getOrder->delete();
+            }
             return redirect('cart')->with('error', "Payment failed or order not found");
         }
     }
@@ -252,6 +264,16 @@ class PaymentController extends Controller
                     $getOrder->is_payment = 1;
                     $getOrder->save();
 
+
+                    foreach (Cart::getContent() as $key => $cart) {
+                        $product = ProductModel::getSingle($cart->id);
+                        $order_item = OrderItemModel::where('order_id', $getOrder->id)->where('product_id', $product->id)->first();
+                        if ($order_item) {
+                            $product->quantity -= $order_item->quantity;
+                            $product->save();
+                        }
+                    }
+
                     // Mail::to($getOrder->email)->send(new OrderInvoiceMail($getOrder));
                     $user_id = 1;
                     $url = url('admin/order/detail/' . $getOrder->id);
@@ -265,7 +287,7 @@ class PaymentController extends Controller
                     $vnp_HashSecret = "BAGAOHAPRHKQZASKQZASVPRSAKPXNYXS"; // Chuỗi bí mật
 
                     $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-                    $vnp_Returnurl = "http://127.0.0.1:8000/vnpay_return"; // Đổi URL này thành URL thực tế của bạn
+                    $vnp_Returnurl = "http://localhost/do-an-co-so/phone-web/public/vnpay_return"; // Đổi URL này thành URL thực tế của bạn
                     $vnp_TxnRef = $getOrder->id; // Mã đơn hàng là ID của đơn hàng
                     $vnp_OrderInfo = "Thanh toán hóa đơn phí dịch vụ";
                     $vnp_OrderType = 'billpayment';
@@ -307,7 +329,6 @@ class PaymentController extends Controller
                         $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
                         $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
                     }
-
                     return redirect($vnp_Url);
                 }
             } else {
