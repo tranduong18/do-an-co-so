@@ -228,6 +228,18 @@ class PaymentController extends Controller
             $getOrder->is_payment = 1;
             $getOrder->save();
 
+            $ordersToDelete = OrderModel::where('user_id', Auth::user()->id)
+                ->where('payment_method', 'vnpay')
+                ->where('is_payment', 0)
+                ->get();
+
+            if(!empty($ordersToDelete)){
+                foreach ($ordersToDelete as $order) {
+                    OrderItemModel::where('order_id', $order->id)->delete();
+                    $order->delete(); // Xóa đơn hàng sau khi đã xóa các mục OrderItem liên quan
+                }
+            }
+            
             foreach (Cart::getContent() as $key => $cart) {
                 $product = ProductModel::getSingle($cart->id);
                 $order_item = OrderItemModel::where('order_id', $getOrder->id)->where('product_id', $product->id)->first();
@@ -243,7 +255,8 @@ class PaymentController extends Controller
             NotificationModel::insertRecord($user_id, $url, $message);
 
             Cart::clear();
-            return redirect('cart')->with('success', "Order successfully placed");
+            // return redirect('cart')->with('success', "Order successfully placed");
+            return view('payment.paysuccess');
         } else {
             if (!empty($getOrder)) {
                 OrderItemModel::where('order_id', $getOrder->id)->delete();
@@ -281,7 +294,8 @@ class PaymentController extends Controller
                     NotificationModel::insertRecord($user_id, $url,  $message);
 
                     Cart::clear();
-                    return redirect('cart')->with('success', "Order successfully placed");
+                    // return redirect('cart')->with('success', "Order successfully placed");
+                    return view('payment.paysuccess');
                 } else if ($getOrder->payment_method == 'vnpay') {
                     $vnp_TmnCode = "GHHNT2HB"; // Mã website tại VNPAY 
                     $vnp_HashSecret = "BAGAOHAPRHKQZASKQZASVPRSAKPXNYXS"; // Chuỗi bí mật
