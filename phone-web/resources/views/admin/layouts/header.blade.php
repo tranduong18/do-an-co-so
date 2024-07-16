@@ -69,6 +69,7 @@
           </a>
         </li>
 
+        @if(Auth::user()->is_manager == 1)
         <li class="nav-item">
           <a href="{{url('admin/admin/list')}}" class="nav-link @if(Request::segment(2) == 'admin') active @endif">
             <i class="nav-icon fas fa-user"></i>
@@ -77,6 +78,7 @@
             </p>
           </a>
         </li>
+        @endif
 
         <li class="nav-item">
           <a href="{{url('admin/customer/list')}}" class="nav-link @if(Request::segment(2) == 'customer') active @endif">

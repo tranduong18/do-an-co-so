@@ -132,6 +132,15 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Quantity <span style="color: red;">*</span></label>
+                                            <input type="text" class="form-control" name="quantity" required value="{{!empty($product->quantity) ? $product->quantity : ''}}" placeholder="Quantity">
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div class="row">
                                     <div class="col-md-12">
@@ -210,6 +219,7 @@
                                 @endif
                                 <hr>
                                 <!-- Short description         -->
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

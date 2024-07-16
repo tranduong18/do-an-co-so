@@ -52,7 +52,7 @@
                         </div><!-- End .toolbox-left -->
 
                         <div class="toolbox-right">
-                            <div class="toolbox-sort">
+                            <!-- <div class="toolbox-sort">
                                 <label for="sortby">Sort by:</label>
                                 <div class="select-custom">
                                     <select name="sortby" id="sortby" class="form-control ChangeSortBy">
@@ -62,7 +62,7 @@
                                         <option value="date">Date</option>
                                     </select>
                                 </div>
-                            </div><!-- End .toolbox-sort -->
+                            </div> -->
 
                         </div><!-- End .toolbox-right -->
                     </div><!-- End .toolbox -->
@@ -99,7 +99,7 @@
                             <h3 class="widget-title">
                                 <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true"
                                     aria-controls="widget-1">
-                                    Category
+                                    Sub Category
                                 </a>
                             </h3><!-- End .widget-title -->
 
@@ -320,18 +320,18 @@
 
 
         noUiSlider.create(priceSlider, {
-            start: [0, 1000],
+            start: [1000000, 100000000],
             connect: true,
             step: 1,
             margin: 1,
             range: {
-                'min': 0,
-                'max': 1000
+                'min': 1000000,
+                'max': 100000000
             },
             tooltips: true,
             format: wNumb({
                 decimals: 0,
-                prefix: '$'
+                suffix: ' VND'
             })
         });
         priceSlider.noUiSlider.on('update', function( values, handle ){
