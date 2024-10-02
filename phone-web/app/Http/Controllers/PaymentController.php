@@ -301,7 +301,7 @@ class PaymentController extends Controller
                     $vnp_HashSecret = "BAGAOHAPRHKQZASKQZASVPRSAKPXNYXS"; // Chuỗi bí mật
 
                     $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-                    $vnp_Returnurl = "http://localhost/do-an-co-so/phone-web/public/vnpay_return"; // Đổi URL này thành URL thực tế của bạn
+                    $vnp_Returnurl = "http://127.0.0.1:8000/vnpay_return"; // Đổi URL này thành URL thực tế của bạn
                     $vnp_TxnRef = $getOrder->id; // Mã đơn hàng là ID của đơn hàng
                     $vnp_OrderInfo = "Thanh toán hóa đơn phí dịch vụ";
                     $vnp_OrderType = 'billpayment';

@@ -134,14 +134,14 @@
                             <div class="product-cat">
                                 <a href="{{url($value->category_slug . '/' . $value->sub_category_slug)}}">{{$value->sub_category_name}}</a>
                             </div>
-                            <h3 class="product-title"><a href="{{url($value->title)}}">{{$value->title}}</a></h3>
+                            <h3 class="product-title"><a href="{{url($value->slug)}}">{{$value->title}}</a></h3>
 
                             <div class="product-price">
                                 {{number_format($value->price, 2)}} VND
                             </div>
                             <div class="ratings-container">
                                 <div class="ratings">
-                                    <div class="ratings-val" style="width: {{$value->getReviewRating($value->id)}};"></div>
+                                    <div class="ratings-val" style="width: {{$value->getReviewRating($value->id)}}%;"></div>
                                     < </div>
                                         <span class="ratings-text">( {{ $value->getTotalReview()}} Reviews )</span>
                                 </div>
